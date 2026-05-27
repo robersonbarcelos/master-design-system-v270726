@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Node
+node_modules/
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Clientes (dados privados — não versionar)
+clients/*/
+!clients/_template/
+!clients/_template/**
+
+# Arquivos temporários
+*.tmp
+*.log
