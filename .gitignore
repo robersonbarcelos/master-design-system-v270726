@@ -12,11 +12,6 @@ node_modules/
 .DS_Store
 Thumbs.db
 
-# Clientes (dados privados — não versionar)
-clients/*/
-!clients/_template/
-!clients/_template/**
-
 # Arquivos temporários
 *.tmp
 *.log
