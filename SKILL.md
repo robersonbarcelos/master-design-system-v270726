@@ -100,7 +100,38 @@ Com base no posicionamento do cliente, selecione 1 DESIGN.md do guia `reference/
   - Sistema tipográfico (display, heading, body, caption)
   - Verificação de acessibilidade (contraste AA mínimo)
 
-### Fase 2: Construção (via impeccable)
+### GATE TECH — obrigatório antes de qualquer linha de código
+
+Antes de iniciar o Craft, declare e trave o stack em `tech-lock.md`:
+
+```markdown
+## TECH LOCK — [Nome do projeto] — [data]
+
+Framework:  [ ] Next.js 14 App Router  [ ] React + Vite  [ ] HTML + React CDN  [ ] Outro: ___
+Estilo:     [ ] Tailwind ONLY          [ ] CSS puro ONLY  [ ] Outro: ___
+Animação:   [ ] Framer Motion          [ ] CSS transitions  [ ] GSAP  [ ] Outro: ___
+Linguagem:  [ ] TypeScript estrito     [ ] JavaScript puro
+Estado:     [ ] React hooks            [ ] Zustand  [ ] Sem estado
+
+PROIBIDO neste projeto:
+- inline style=""
+- mix de sistemas de estilo (ex: Tailwind + CSS modules + inline)
+- mix de sistemas de animação (ex: Framer Motion + @keyframes + transition: all)
+- qualquer lib fora da lista acima
+- any / sem tipagem (se TypeScript)
+```
+
+→ Salve em `runs/[data]/tech-lock.md`
+→ Aguarde aprovação do usuário antes de continuar
+→ **STOP se qualquer componente usar tecnologia fora deste arquivo — corrija antes de avançar**
+
+---
+
+### Fase 2: Construção (via impeccable + step-by-step)
+
+> **Execute via `/step-by-step`:** um componente por vez na ordem abaixo.
+> NUNCA gere múltiplos componentes sem auditoria entre eles.
+> Para cada componente: ESTUDAR → IMPLEMENTAR → VERIFICAR TECH LOCK → AUDITAR → CONFIRMAR
 
 Execute o fluxo impeccable completo:
 
@@ -405,7 +436,18 @@ Se não conseguir responder com especificidade → pare e pergunte ao usuário. 
 
 **Teste obrigatório:** leia a proposta sem o nome do produto. Alguém identificaria para que serve? Se não → explore mais fundo.
 
-### Fase 3: Execução (via taste-skill + interface-design)
+### GATE TECH — obrigatório antes de qualquer linha de código
+
+Antes de iniciar a execução, declare e trave o stack em `tech-lock.md` (mesmo formato do CONTEXTO 1).
+Contextos de interface têm risco alto de "salada de fruta" — CSS Modules + Tailwind + styled-components misturados.
+→ Salve em `runs/[data]/tech-lock.md` → Aguarde aprovação → STOP em qualquer violação detectada
+
+---
+
+### Fase 3: Execução (via taste-skill + interface-design + step-by-step)
+
+> **Execute via `/step-by-step`:** uma view/componente por vez.
+> NUNCA implemente múltiplas views sem verificar a anterior contra o tech-lock.md.
 
 **Stack padrão:** React / Next.js + Tailwind CSS + Framer Motion
 
@@ -471,6 +513,9 @@ Configuração de dials para interfaces de produto:
 | `card-news-generator-v2` | 2 | Fase 2 Carrossel | após JSON de capa gerado por json-prompt-generator |
 | `visual-critique` | 1, 2 | Validação | revisão visual antes de entregar ao cliente |
 | `landing-page-guide-v2` | 1 | Fase 1 | benchmark de estrutura e copy de LP |
+| `step-by-step` | 1, 5 | Fase 2 Craft / Fase 3 Exec | Antes do primeiro componente — um por vez, auditado |
+| `caca-as-bruxas` | 1, 2, 3, 4, 5 | Qualquer fase | Qualquer erro durante execução — causa raiz obrigatória |
+| `memory` | Todos | Fim de sessão | "salvar progresso", "fim de sessão", após fase aprovada |
 
 ### Escopo por skill — o que FAZ e NÃO FAZ
 
@@ -577,6 +622,10 @@ Configuração de dials para interfaces de produto:
 ### Critérios de pronto por entregável
 
 **LP completa (CONTEXTO 1):**
+- [ ] tech-lock.md declarado, aprovado e seguido — nenhuma violação de stack
+- [ ] Zero `style=""` inline em qualquer componente
+- [ ] Zero mix de sistemas de estilo (Tailwind + CSS modules + inline)
+- [ ] Zero mix de sistemas de animação
 - [ ] 11 elementos obrigatórios presentes
 - [ ] Critique 5D sem pendências críticas
 - [ ] Audit impeccable: WCAG AA, performance, responsivo, zero anti-patterns de IA
@@ -598,6 +647,8 @@ Configuração de dials para interfaces de produto:
 - [ ] Legenda revisada contra voz do cliente no brand-spec
 
 **Interface de Produto (CONTEXTO 5):**
+- [ ] tech-lock.md declarado, aprovado e seguido — nenhuma violação de stack
+- [ ] Zero `style=""` inline, zero mix de sistemas de estilo
 - [ ] Intent respondido com especificidade
 - [ ] Assinatura identificável em 5 elementos concretos
 - [ ] Surface elevation system implementado
@@ -636,9 +687,22 @@ Salve automaticamente em `runs/[data-de-hoje]/` após cada etapa aprovada:
 | JSON de stories/cover | Após json-prompt-generator, frame de capa | `json-stories-[tema].md` |
 | JSON de lançamento | Após json-prompt-generator, post da campanha | `json-lancamento-[tipo].md` |
 | Roteiro de vídeo | Após gerar o roteiro | `roteiro-[tema].md` |
+| tech-lock.md | Antes do primeiro componente (GATE TECH) | `tech-lock.md` |
+| bugs.md | Após correção de bug relevante (caca-as-bruxas) | `bugs-[data].md` |
 
 Use kebab-case para o tema. Ex: `halvng-bitcoin`, `ethereum-staking`.
 Se a pasta `runs/[data]` não existir, crie antes de salvar.
+
+### Debug (via caca-as-bruxas)
+- Qualquer erro durante execução de código → ative `/caca-as-bruxas` imediatamente
+- NUNCA tente corrigir sem investigar a causa raiz: sintoma → 3 fontes → triangulação → fix → verificação
+- Anti-padrão proibido: "tentei X e funcionou" sem entender o porquê
+- Bugs relevantes registrados em `runs/[data]/bugs-[data].md`
+
+### Memória entre sessões (via memory)
+- Ao fim de cada sessão de projeto → `/memory`
+- Ao ser solicitado "salvar progresso" ou "preparar próxima sessão" → `/memory`
+- Cada cliente tem `clients/[nome]/memory/` com índice enxuto (≤200 linhas) + histórico em `HISTORIC/`
 
 ### Token efficiency
 - Carregue apenas os arquivos de contexto do cliente ativo
