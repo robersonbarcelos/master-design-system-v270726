@@ -73,6 +73,7 @@ Every prompt must follow this structure. Populate each section based on what you
       "perspective": "Perspective type, vanishing points, depth layering, leading lines",
       "framing": "rule of thirds | golden ratio | centered | symmetrical | natural frame-within-frame | split layout | [describe]",
       "subject_placement": "Precise positioning within the frame, visual weight distribution, eye path",
+      "safe_area": "For social/ad formats: minimum 64px padding all sides — no text, no icons, no CTA touching edges. State inner safe zone (e.g., 952x1222px safe zone inside 1080x1350px). For stories/reels 9:16: 250px top and bottom for UI chrome. Omit only for non-social formats (print, editorial).",
       "ui_elements": "EXACT text for every visible text element — headers, taglines, body copy, labels, slide counters, brand handles. Specify font style, weight, colour, alignment, and position for each. Only include if the reference contains visible text/typography."
     },
     "quality": {
@@ -87,6 +88,8 @@ Every prompt must follow this structure. Populate each section based on what you
 ## Core Rules
 
 These rules determine quality. Follow them closely.
+
+0. **Safe area is mandatory on every social media creative.** Always include a `safe_area` field inside `composition` for any social/ad format (feed, stories, carousel cover, ads). Standard rule: minimum 64px padding on all sides — no text, no icons, no CTA elements touching edges. State the inner safe zone explicitly (e.g., `952x1222px safe zone inside 1080x1350px frame`). This prevents elements from being cropped by platform UI, reels borders, or ad previews.
 
 1. **Be specific, not generic.** "Warm golden-hour sunlight raking across the subject at 15 degrees from camera-left" beats "natural lighting." Precision is what makes the output useful.
 

@@ -103,7 +103,10 @@ overexposed, washed out colors, stock photo look, corporate clipart style
   "prompt": "[sujeito ou cena], dark background #0a0a0a, accent color #E84000 glow, [lighting: cinematic/rim/studio], [composição], Inter Tight aesthetic, premium dark UI feel, no watermark, no text, clean area for logo",
   "negative_prompt": "white background, light background, blue tones, purple tones, humanoid robot, android face, circuit board skin, text overlay, watermark, neon cyberpunk, RGB gaming, overexposed",
   "aspect_ratio": "4:5",
-  "style": "premium dark product photography, cinematic lighting, #E84000 accent glow"
+  "style": "premium dark product photography, cinematic lighting, #E84000 accent glow",
+  "composition": {
+    "safe_area": "minimum 64px padding all sides — no text, no icons, no elements touching edges. Safe zone: 952x1222px inside 1080x1350px (feed 4:5). Stories/reels: 250px top and bottom for UI chrome, 64px sides."
+  }
 }
 ```
 

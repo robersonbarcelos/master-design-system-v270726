@@ -114,6 +114,13 @@ optimization-advisor-sms → próximas ações
 - [ ] CTA específico ao final
 - [ ] Hashtags relevantes (não genéricas)
 
+### Safe area (obrigatório em todos os formatos visuais)
+- [ ] Feed 4:5 (1080x1350): zona segura 952x1222px — 64px de padding em todos os lados
+- [ ] Feed quadrado (1080x1080): zona segura 952x952px — 64px de padding em todos os lados
+- [ ] Stories/Reels (1080x1920): 250px de margem no topo e rodapé (UI do Instagram/TikTok), 64px nas laterais
+- [ ] Nenhum texto, ícone, CTA ou elemento de marca encostando nas bordas da imagem
+- [ ] JSON gerado via json-prompt-generator deve incluir campo `safe_area` em `composition`
+
 ## Setup de cliente (executar uma vez)
 ```
 social-media-context-sms → .agents/social-media-context-sms.md

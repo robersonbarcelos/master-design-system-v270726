@@ -30,9 +30,10 @@
 - Aspira = operação e suporte | Clóvis = estrutura e documentação
 
 ### Preço
-- SEMPRE mostrar âncora R$997 antes de R$87,90
-- Nunca mostrar R$87,90 sem o contexto do que vale (âncora ou value stack)
-- 6x R$16,50 pode aparecer como variação de preço em posts de conversão
+- SEMPRE mostrar âncora R$997 antes de R$87,95
+- Nunca mostrar R$87,95 sem o contexto do que vale (âncora ou value stack)
+- NUNCA usar "acesso vitalício" — produto não tem essa promessa
+- 6x parcelas pode aparecer como variação de preço em posts de conversão
 
 ---
 
@@ -58,7 +59,6 @@ Antes de escrever qualquer copy, responder:
 - "Kit de Ativação"
 - "operação" (o agente roda a operação)
 - "24/7" ou "24 horas"
-- "acesso vitalício"
 - "garantia incondicional de 7 dias"
 - "em menos de 5 minutos"
 - "fundação" (base que torna o agente útil de verdade)
