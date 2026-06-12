@@ -1,0 +1,123 @@
+{
+  "template": "carrossel-twitter-style",
+  "version": "clara",
+  "slide": "capa",
+  "ideia": "A",
+  "descricao": "Peso tipografico puro — ironia no pre-headline, punch em (de novo.)",
+
+  "format": {
+    "aspect_ratio": "4:5",
+    "resolution": "1080x1350px",
+    "background_color": "#FFFFFF"
+  },
+
+  "zones": {
+    "header": {
+      "height": "80px",
+      "position": "top",
+      "note": "DEIXAR LIVRE — adicionar manualmente no Canva: foto de perfil + @intushub + categoria"
+    },
+
+    "content": {
+      "position": "below header",
+      "height": "55% do frame",
+      "margin_lateral": "44px",
+      "margin_top": "24px",
+      "blocks": [
+        {
+          "id": "pre-headline",
+          "type": "text",
+          "content": "Você abre o ChatGPT e digita:",
+          "font_size": "28px",
+          "font_style": "regular sans-serif",
+          "font_color": "#666666",
+          "margin_bottom": "12px"
+        },
+        {
+          "id": "headline-linha-1",
+          "type": "text",
+          "content": "\"MEU NEGÓCIO",
+          "font_size": "96px",
+          "font_style": "ultra bold condensed, all caps",
+          "font_color": "#1A1A1A",
+          "margin_bottom": "0px"
+        },
+        {
+          "id": "headline-linha-2",
+          "type": "text",
+          "content": "É UM...\"",
+          "font_size": "96px",
+          "font_style": "ultra bold condensed, all caps",
+          "font_color": "#1A1A1A",
+          "margin_bottom": "8px"
+        },
+        {
+          "id": "headline-punch",
+          "type": "text",
+          "content": "(de novo.)",
+          "font_size": "56px",
+          "font_style": "regular sans-serif, sentence case",
+          "font_color": "#E8722A",
+          "note": "troca de cor — a ironia mora aqui. Menor que o headline, mais leve, mais humano.",
+          "margin_bottom": "24px"
+        },
+        {
+          "id": "body",
+          "type": "text",
+          "content": "3 coisas que seu agente faz enquanto você repete o contexto. Arraste.",
+          "font_size": "28px",
+          "font_style": "regular sans-serif",
+          "font_color": "#666666"
+        }
+      ]
+    },
+
+    "image": {
+      "position": "bottom half",
+      "height": "35% do frame",
+      "margin_lateral": "44px",
+      "margin_top": "20px",
+      "border_radius": "18px",
+      "tipo": "screenshot",
+      "descricao": "Screenshot do campo de texto do ChatGPT em branco, cursor piscando, sem texto digitado. Interface cinza/branca do ChatGPT contrasta com o fundo branco do template.",
+      "instrucao_producao": "Capturar tela do ChatGPT com campo de nova conversa vazio. Cortar para mostrar so o input e parte do logo. Fundo branco do template cria tensao visual com a interface."
+    },
+
+    "footer": {
+      "height": "60px",
+      "position": "bottom",
+      "margin_lateral": "44px",
+      "left": {
+        "content": "@intushub",
+        "font_size": "20px",
+        "font_style": "regular sans-serif",
+        "font_color": "#AAAAAA"
+      },
+      "center": {
+        "content": "arraste pra ler →",
+        "font_size": "20px",
+        "font_style": "regular sans-serif",
+        "font_color": "#AAAAAA",
+        "note": "so na capa — omitir nos slides internos"
+      },
+      "right": null
+    }
+  },
+
+  "marking_used": {
+    "type": "color_swap",
+    "element": "headline-punch",
+    "accent_color": "#E8722A",
+    "note": "Unica marcacao do slide. A ironia de '(de novo.)' em laranja e o momento de identificacao do leitor."
+  },
+
+  "negative_rules_check": [
+    "sem travessao — ok",
+    "sem linhas divisorias — ok",
+    "maximo 3 tamanhos de fonte — ok: 96px / 56px / 28px",
+    "maximo 1 ideia central — ok: voce repete, ele nao precisa",
+    "imagem com border radius — ok: 18px",
+    "header livre para Canva — ok",
+    "maximo 1 marcacao — ok: so color_swap"
+  ]
+}

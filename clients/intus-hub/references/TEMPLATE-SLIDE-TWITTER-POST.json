@@ -1,0 +1,120 @@
+{
+  "template": "carrossel-twitter-post-style",
+  "version": "clara",
+  "description": "Template para carrosseis no estilo post de Twitter/X capturado. Diferente do template condensado — este usa tipografia editorial corrida, sem headline ultra bold. Ideal para conteúdo de nicho, educacional e storytelling de dados.",
+  "format": {
+    "aspect_ratio": "4:5",
+    "resolution": "1080x1350px",
+    "background_color": "#FFFFFF",
+    "format_preset": "Instagram Feed Portrait",
+    "width_px": 1080,
+    "height_px": 1350,
+    "orientation": "portrait",
+    "platform": "Instagram Feed",
+    "dpi": 72,
+    "color_mode": "RGB"
+  },
+  "zones": {
+    "header": {
+      "height": "88px",
+      "position": "top",
+      "margin_lateral": "44px",
+      "margin_top": "32px",
+      "layout": "horizontal — foto à esquerda, texto à direita",
+      "elements": {
+        "avatar": {
+          "shape": "circle",
+          "size": "64px",
+          "position": "left",
+          "note": "DEIXAR VAZIO — adicionar foto de perfil manualmente no Canva"
+        },
+        "text_block": {
+          "position": "right of avatar",
+          "margin_left": "16px",
+          "line_1": {
+            "content": "Diego Spanevello | Inteligência Artificial",
+            "font_size": "26px",
+            "font_style": "semibold sans-serif",
+            "font_color": "#1A1A1A"
+          },
+          "line_2": {
+            "content": "@diego.spanevello",
+            "font_size": "22px",
+            "font_style": "regular sans-serif",
+            "font_color": "#888888"
+          }
+        },
+        "verified_badge": {
+          "type": "circle checkmark",
+          "color": "#1D9BF0",
+          "size": "20px",
+          "position": "inline after name"
+        }
+      }
+    },
+    "content": {
+      "position": "below header",
+      "height": "auto — expande conforme o texto",
+      "margin_lateral": "44px",
+      "margin_top": "32px",
+      "margin_bottom": "24px",
+      "blocks": [
+        {
+          "id": "copy",
+          "type": "text-editorial",
+          "note": "Texto corrido, sem headline condensada. Estilo post de Twitter — jornalístico e direto. Quebras de linha são intencionais e fazem parte do ritmo.",
+          "font_size": "34px",
+          "font_style": "regular sans-serif",
+          "font_color": "#1A1A1A",
+          "line_height": "1.4",
+          "bold_support": {
+            "enabled": true,
+            "font_style": "bold sans-serif",
+            "font_color": "#1A1A1A",
+            "note": "negrito apenas — sem mudança de cor no bold. Use **palavra** para marcar."
+          },
+          "example_content": "Um grupo de desenvolvedores acabou de protocolar uma proposta para **CONGELAR Bitcoin.**\n\nNão de hackers.\n\n**DO CRIADOR DO BTC O SATOSHI.**\n**PARECE DOIDERA?**\n**VAMOS ENTENDER ESSA LOUCURA**"
+        }
+      ]
+    },
+    "image": {
+      "position": "below content",
+      "height": "380px",
+      "margin_lateral": "44px",
+      "margin_bottom": "44px",
+      "border_radius": "18px",
+      "note": "Imagem gerada por IA ou foto real. Nunca full bleed — sempre com recuos laterais e border radius. Carregar via ChatGPT Image ou anexar referência ao gerador.",
+      "overlay": {
+        "type": "none"
+      }
+    },
+    "footer": {
+      "exists": false,
+      "note": "Sem footer — handle @diego.spanevello já está no header estilo tweet. Não duplicar."
+    }
+  },
+  "text_rules": {
+    "max_font_sizes": 2,
+    "sizes_in_use": ["34px corpo", "26px header nome"],
+    "bold_is_the_only_marking": true,
+    "no_color_accent_in_copy": true,
+    "line_breaks_are_intentional": true,
+    "note": "Quebras de linha fazem parte do ritmo — respeitar exatamente como estão escritas. Não juntar parágrafos."
+  },
+  "differences_from_main_templates": {
+    "vs_clara": "Sem headline ultra bold condensada de 96px. Sem marcação laranja #E8722A no copy. Sem pre-headline. Texto é editorial corrido em 34px. Header imita UI do Twitter.",
+    "vs_escura": "Fundo sempre branco — não tem versão escura deste template. O contraste é obtido via negrito no texto."
+  },
+  "negative_rules": [
+    "sem headline ultra bold condensada",
+    "sem laranja de destaque #E8722A no copy",
+    "sem footer com @handle — já está no header",
+    "sem travessão",
+    "sem linhas divisórias entre seções",
+    "imagem nunca sem border radius",
+    "imagem nunca full bleed",
+    "avatar sempre vazio para adicionar no Canva",
+    "não juntar quebras de linha intencionais do copy"
+  ],
+  "when_to_use": "Conteúdo de nicho educacional, análise de mercado, breaking news cripto/IA, storytelling de dados. Quando o conteúdo é mais jornalístico e menos hype. Quando a imagem é complementar (screenshot, cena) e não hero visual."
+}

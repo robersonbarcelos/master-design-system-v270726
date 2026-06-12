@@ -1,0 +1,272 @@
+{
+  "template": "carrossel-carol",
+  "version": "[clara | escura | media]",
+  "slide": "[slide-1 | slide-2 | slide-3 ...]",
+  "format": {
+    "aspect_ratio": "4:5",
+    "resolution": "1080x1350px",
+    "safe_area": "952x1222px (64px mínimo todos os lados)"
+  },
+
+  "skin_realism_standard": {
+    "note": "OBRIGATÓRIO em todo prompt que contenha pessoa. Aplicar no campo materials.skin.",
+    "formula": "[fair/medium/dark] skin, [warm/cool/neutral] undertone. Visible open pores on forehead and cheekbones. Fine individual peach fuzz hairs catching light. Natural [freckles / minor imperfections / uneven skin tone] scattered across nose and cheekbones. Matte finish — skin absorbs light rather than reflects. NO foundation finish, NO highlight powder, NO cosmetic gloss, NO airbrushed smoothing. Zero post-processing. Natural lived-in skin.",
+    "quality_avoid_obrigatorio": ["plastic skin", "airbrushed skin", "poreless skin", "CGI smoothness", "wax texture", "cosmetic sheen", "specular hotspot on forehead", "beauty retouch", "frequency separation"],
+    "reference_standard": "Peter Lindbergh + Paolo Roversi — matte, unretouched, visible pores, peach fuzz"
+  },
+
+  "layout_padrao_aprovado": {
+    "note": "Padrão aprovado em produção — usar como base para todos os slides internos.",
+    "estrutura": "foto full-bleed como fundo + caixinha de texto flutuando no terço inferior",
+    "foto": {
+      "tipo": "full-bleed, ocupa o frame inteiro como fundo",
+      "crop_padrao": "cintura para cima — upper body centered, corte na altura do quadril. Mostra a peça completa.",
+      "crop_alternativo": "close detalhe (manga, textura, punho) quando o slide foca num detalhe específico",
+      "note": "crop definido pelo usuário na hora da produção — descrever sempre no JSON"
+    },
+    "caixinha_texto": {
+      "background_instrucao": "MUST be exactly the hex specified — no variation, no interpretation by the AI",
+      "posicao": "terço inferior, flutuando sobre a foto",
+      "margens": "32px nas laterais e base — NÃO encosta nas bordas do frame",
+      "border_radius": "none — bordas retas, sem arredondamento",
+      "shadow": "none",
+      "border": "none",
+      "padding_interno": "28px todos os lados"
+    },
+    "tipografia_dentro_da_caixa": {
+      "titulo": {
+        "font": "Halant Bold Italic",
+        "font_size": "52px",
+        "color_clara": "#4c3529",
+        "color_escura": "#e5ded3",
+        "alignment": "left",
+        "note": "título forte, itálico — âncora visual da caixinha"
+      },
+      "corpo": {
+        "font": "Nunito Sans Regular 400",
+        "font_size": "20px",
+        "line_height": "1.55",
+        "color_clara": "#786c5c",
+        "color_escura": "rgba(229,222,211,0.80)",
+        "alignment": "left"
+      },
+      "destaque_negrito": {
+        "note": "OBRIGATÓRIO — sempre 2 a 3 palavras-chave em negrito no corpo de cada slide",
+        "font": "Nunito Sans Bold 700",
+        "font_size": "igual ao corpo — 20px",
+        "color": "mesma cor do corpo — sem mudar a cor, só o peso",
+        "instrucao_prompt": "In the card body text, the 2-3 keyword words specified by [BOLD] markers must be rendered in Nunito Sans Bold 700 weight. All other body text remains Nunito Sans Regular 400. Same color, same size — only font weight changes."
+      }
+    },
+    "versoes_de_cor_da_caixa": {
+      "note": "Alternar entre versões para dar ritmo visual ao carrossel",
+      "clara":  { "bg": "#e5ded3", "titulo": "#4c3529", "corpo": "#786c5c",              "uso": "slides 2, 3, 5" },
+      "escura": { "bg": "#273d29", "titulo": "#e5ded3", "corpo": "rgba(229,222,211,0.80)", "uso": "slides 4, CTA" },
+      "cafe":   { "bg": "#4c3529", "titulo": "#e5ded3", "corpo": "#c2b6a5",              "uso": "variação opcional" }
+    }
+  },
+
+  "alternancia_padrao": [
+    "CAPA    → V2 Café  ou  V1 Verde  (escura)",
+    "SLIDE 1 → V3 Linho              (clara)",
+    "SLIDE 2 → V1 Verde              (escura)",
+    "SLIDE 3 → V4 Areia              (média)",
+    "SLIDE 4 → V2 Café               (escura)",
+    "SLIDE 5 → V3 Linho              (clara)",
+    "CTA     → V1 Verde              (escura, fechamento forte)"
+  ],
+  "logica_ancora": "Salva #9db4a1 aparece como acento nos dois fundos — garante coesão entre todos os slides",
+
+  "versao_escura": {
+    "backgrounds": {
+      "v1_verde": "#273d29",
+      "v2_cafe": "#4c3529"
+    },
+    "zones": {
+      "header": {
+        "height": "80px",
+        "note": "DEIXAR LIVRE — Canva"
+      },
+      "content": {
+        "position": "below header",
+        "height": "55% do frame",
+        "margin_lateral": "44px",
+        "margin_top": "24px",
+        "blocks": [
+          {
+            "id": "pre-headline",
+            "type": "text",
+            "font": "Nunito Sans Regular",
+            "font_size": "22px",
+            "font_style": "italic",
+            "font_color": "rgba(229,222,211,0.60)",
+            "margin_bottom": "8px"
+          },
+          {
+            "id": "headline",
+            "type": "text-mixed",
+            "lines": [
+              {
+                "font": "Halant Bold",
+                "font_size": "72-96px",
+                "font_color": "#e5ded3"
+              },
+              {
+                "font": "Halant Bold Italic",
+                "font_size": "72-96px",
+                "font_color": "#9db4a1",
+                "note": "palavra-acento em Salva — ancora visual"
+              }
+            ],
+            "margin_bottom": "20px"
+          },
+          {
+            "id": "subtext",
+            "type": "text",
+            "font": "Halant Regular",
+            "font_size": "28-36px",
+            "font_color": "rgba(229,222,211,0.80)",
+            "margin_bottom": "12px"
+          },
+          {
+            "id": "body",
+            "type": "text",
+            "font": "Nunito Sans Regular",
+            "font_size": "22-26px",
+            "font_color": "rgba(229,222,211,0.55)"
+          }
+        ]
+      },
+      "image": {
+        "height": "38% do frame",
+        "margin_lateral": "44px",
+        "border_radius": "18px",
+        "overlay": "none"
+      },
+      "footer": {
+        "height": "60px",
+        "left": {
+          "content": "@carolstaggemeier",
+          "font_size": "20px",
+          "font_color": "rgba(229,222,211,0.35)"
+        }
+      }
+    },
+    "markings": {
+      "color_swap": { "palavra_acento": "#9db4a1", "resto": "#e5ded3" },
+      "underline": { "color": "#9db4a1", "thickness": "2px" },
+      "pill_badge": { "bg": "#e5ded3", "text": "#273d29" },
+      "pill_badge_delicado": { "bg": "#9db4a1", "text": "#273d29" }
+    }
+  },
+
+  "versao_clara": {
+    "backgrounds": {
+      "v3_linho": "#e5ded3"
+    },
+    "zones": {
+      "header": {
+        "height": "80px",
+        "note": "DEIXAR LIVRE — Canva"
+      },
+      "content": {
+        "position": "below header",
+        "height": "55% do frame",
+        "margin_lateral": "44px",
+        "margin_top": "24px",
+        "blocks": [
+          {
+            "id": "pre-headline",
+            "type": "text",
+            "font": "Nunito Sans Regular",
+            "font_size": "22px",
+            "font_style": "regular, letter-spacing 1px",
+            "font_color": "rgba(39,61,41,0.55)",
+            "margin_bottom": "8px"
+          },
+          {
+            "id": "headline",
+            "type": "text-mixed",
+            "lines": [
+              {
+                "font": "Halant Bold",
+                "font_size": "72-96px",
+                "font_color": "#273d29"
+              },
+              {
+                "font": "Halant Regular Italic",
+                "font_size": "72-96px",
+                "font_color": "#4c3529",
+                "note": "peso regular/itálico como contraste ao Bold acima"
+              }
+            ],
+            "margin_bottom": "20px"
+          },
+          {
+            "id": "subtext",
+            "type": "text-marked",
+            "font": "Halant Regular",
+            "font_size": "28-36px",
+            "font_color": "#4c3529",
+            "marking": {
+              "type": "underline",
+              "color": "#9db4a1",
+              "thickness": "2px"
+            },
+            "margin_bottom": "12px"
+          },
+          {
+            "id": "body",
+            "type": "text",
+            "font": "Nunito Sans Regular",
+            "font_size": "22-26px",
+            "font_color": "rgba(120,108,92,0.85)"
+          }
+        ]
+      },
+      "image": {
+        "height": "38% do frame",
+        "margin_lateral": "44px",
+        "border_radius": "18px"
+      },
+      "footer": {
+        "height": "60px",
+        "left": {
+          "content": "@carolstaggemeier",
+          "font_size": "20px",
+          "font_color": "rgba(39,61,41,0.40)"
+        }
+      }
+    },
+    "markings": {
+      "underline": { "color": "#9db4a1", "thickness": "2px", "uso": "nome de peça ou dado de destaque" },
+      "pill_badge": { "bg": "#273d29", "text": "#e5ded3" },
+      "italic_destaque": { "font": "Halant Italic", "color": "#4c3529" }
+    }
+  },
+
+  "versao_media": {
+    "backgrounds": {
+      "v4_areia": "#c2b6a5"
+    },
+    "headline_color": "#273d29",
+    "subtext_color": "#4c3529",
+    "body_color": "rgba(120,108,92,0.85)",
+    "accent_color": "#4c3529",
+    "markings": {
+      "pill_badge": { "bg": "#4c3529", "text": "#e5ded3" },
+      "underline": { "color": "#273d29", "thickness": "2px" }
+    }
+  },
+
+  "negative_rules": [
+    "sem travessao (—)",
+    "sem fundo branco puro ou preto puro",
+    "sem fonte abaixo de 22px",
+    "maximo 3 tamanhos de fonte por slide",
+    "maximo 1 ideia central por slide",
+    "imagem sempre com border_radius 18px — nunca full-bleed nos slides internos",
+    "header sempre livre para o Canva",
+    "sem linhas divisorias entre secoes"
+  ]
+}

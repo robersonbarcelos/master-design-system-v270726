@@ -1,0 +1,141 @@
+{
+  "template": "carrossel-twitter-style",
+  "version": "clara",
+  "slide": "capa",
+  "ideia": "C",
+  "descricao": "Estrutura de lista na capa — fiel ao formato da referencia Claude Code, linha 'SEU AGENTE' inteira em laranja, setas no rodape do copy",
+
+  "format": {
+    "aspect_ratio": "4:5",
+    "resolution": "1080x1350px",
+    "background_color": "#FFFFFF"
+  },
+
+  "zones": {
+    "header": {
+      "height": "80px",
+      "position": "top",
+      "note": "DEIXAR LIVRE — adicionar manualmente no Canva: foto de perfil + @intushub + categoria"
+    },
+
+    "content": {
+      "position": "below header",
+      "height": "55% do frame",
+      "margin_lateral": "44px",
+      "margin_top": "24px",
+      "blocks": [
+        {
+          "id": "headline-linha-1",
+          "type": "text",
+          "content": "3 COISAS QUE",
+          "font_size": "88px",
+          "font_style": "ultra bold condensed, all caps",
+          "font_color": "#1A1A1A",
+          "margin_bottom": "0px"
+        },
+        {
+          "id": "headline-linha-2",
+          "type": "text",
+          "content": "SEU AGENTE",
+          "font_size": "88px",
+          "font_style": "ultra bold condensed, all caps",
+          "font_color": "#E8722A",
+          "note": "linha inteira em laranja — ancora visual e nome do produto implícito",
+          "margin_bottom": "0px"
+        },
+        {
+          "id": "headline-linha-3",
+          "type": "text",
+          "content": "FAZ ENQUANTO",
+          "font_size": "88px",
+          "font_style": "ultra bold condensed, all caps",
+          "font_color": "#1A1A1A",
+          "margin_bottom": "0px"
+        },
+        {
+          "id": "headline-linha-4",
+          "type": "text",
+          "content": "VOCÊ DIGITA",
+          "font_size": "88px",
+          "font_style": "ultra bold condensed, all caps",
+          "font_color": "#1A1A1A",
+          "margin_bottom": "16px"
+        },
+        {
+          "id": "subtext",
+          "type": "text",
+          "content": "(pela décima vez essa semana)",
+          "font_size": "30px",
+          "font_style": "regular sans-serif, sentence case",
+          "font_color": "#666666",
+          "margin_bottom": "20px"
+        },
+        {
+          "id": "arrows",
+          "type": "text",
+          "content": "→  →  →",
+          "font_size": "40px",
+          "font_style": "regular sans-serif",
+          "font_color": "#1A1A1A",
+          "note": "setas com espacamento generoso entre elas — guia o olho para o proximo slide"
+        }
+      ]
+    },
+
+    "image": {
+      "position": "bottom half",
+      "height": "35% do frame",
+      "margin_lateral": "44px",
+      "margin_top": "20px",
+      "border_radius": "18px",
+      "tipo": "screenshot de interface",
+      "descricao": "Print da tela do ChatGPT com uma conversa onde o usuario esta digitando 'Meu negocio e...' — a mensagem cortada no meio, sugerindo que esta explicando contexto novamente. Interface cinza/branca do ChatGPT.",
+      "instrucao_producao": "Capturar tela real do ChatGPT com conversa iniciada. Mostrar o campo de input com texto parcial. Pode ser mockup montado no Canva com texto simulado. Fundo branco do template contrasta com a interface neutra do ChatGPT.",
+      "alternativa_imagem": "Se preferir evitar screenshot de produto de terceiro: usar mockup de chat generico (baloes de conversa empilhados) com texto reduzido e campo vazio ao final, indicando que o usuario vai precisar digitar tudo de novo."
+    },
+
+    "footer": {
+      "height": "60px",
+      "position": "bottom",
+      "margin_lateral": "44px",
+      "left": {
+        "content": "@intushub",
+        "font_size": "20px",
+        "font_style": "regular sans-serif",
+        "font_color": "#AAAAAA"
+      },
+      "center": {
+        "content": "arraste pra ler →",
+        "font_size": "20px",
+        "font_style": "regular sans-serif",
+        "font_color": "#AAAAAA"
+      },
+      "right": null
+    }
+  },
+
+  "marking_used": {
+    "type": "color_swap",
+    "element": "headline-linha-2",
+    "accent_color": "#E8722A",
+    "note": "Linha 'SEU AGENTE' inteira em laranja. Unica marcacao do slide. Sem sublinhado, sem circulo, sem badge."
+  },
+
+  "font_sizes_used": [
+    "88px — headline (4 linhas)",
+    "30px — subtext parentese",
+    "40px — setas"
+  ],
+
+  "note_producao": "Ideia C e a mais proxima da referencia Claude Code. Funciona bem se o produto for reconhecido pelo leitor. A linha 'SEU AGENTE' em laranja cria ancora imediata com o nome do produto. As setas no corpo do slide substituem o footer 'arraste' como elemento visual — manter os dois para reforcar.",
+
+  "negative_rules_check": [
+    "sem travessao — ok",
+    "sem linhas divisorias — ok",
+    "maximo 3 tamanhos de fonte — ok: 88px / 40px / 30px",
+    "maximo 1 ideia central — ok: agente faz o que voce repete",
+    "imagem com border radius — ok: 18px",
+    "header livre para Canva — ok",
+    "maximo 1 marcacao — ok: so color_swap na linha 2"
+  ]
+}

@@ -37,11 +37,23 @@ last_updated: 2026-05-22
 
 ## Tipografia
 
-**Fonte:** Riccione TS Italic — serif display alto contraste, thin/thick stroke, bold italic
-**Estilo:** elegante, feminino, editorial
-**Headline:** Riccione TS Italic — grande, impactante
-**Corpo:** serif regular ou sans-serif leve para textos secundários
-**Labels:** BEFORE / AFTER em pill branco com texto preto
+### Sistema tipográfico (v2.0 — atualizado 2026-06-09)
+
+| Papel | Fonte | Estilo | Uso |
+|-------|-------|--------|-----|
+| Display / Headline | **The Seasons** | Serif display alto contraste, elegante, feminino | Títulos grandes, headlines de impacto, títulos de serviço |
+| Subtítulo / Body | **Poppins** | Sans-serif geométrica, clean, legível | Subtítulos, body copy, CTAs, textos secundários |
+| Labels | Poppins Bold | Caps, tamanho pequeno | Pill BEFORE / AFTER, labels de serviço |
+
+### Regras de uso
+- **The Seasons** — sempre em destaque, nunca em corpo de texto longo. Peso regular ou italic para elegância.
+- **Poppins** — pesos Light/Regular para body, SemiBold para CTAs e destaques secundários.
+- Hierarquia: headline grande The Seasons → subtítulo Poppins → logo
+- Copy curto: máximo 2 linhas por bloco
+- Contraste mínimo garantido em todos os fundos da paleta
+
+### Fontes anteriores
+- Riccione TS Italic — descontinuada para novos conteúdos. Manter em assets já publicados.
 
 ---
 
@@ -129,4 +141,4 @@ Michele Fara • Brazilian Lash Artist
 - Paleta cream/burgundy
 - Ícone simples centralizado
 - Fundo sólido (não foto)
-- Fonte Riccione TS Italic quando possível
+- Fonte The Seasons quando possível

@@ -1,0 +1,165 @@
+{
+  "template": "carrossel-twitter-style",
+  "version": "escura",
+  "format": {
+    "aspect_ratio": "4:5",
+    "resolution": "1080x1350px",
+    "background": {
+      "type": "gradient",
+      "direction": "top to bottom",
+      "stops": [
+        {"position": "0%", "color": "#2A1500"},
+        {"position": "100%", "color": "#0F0500"}
+      ],
+      "note": "gradiente marrom quente — mesma logica da referencia escura"
+    }
+  },
+  "zones": {
+    "header": {
+      "height": "80px",
+      "position": "top",
+      "note": "DEIXAR LIVRE — adicionar manualmente no Canva",
+      "conteudo": "foto de perfil + @diego.spanevello + categoria"
+    },
+    "content": {
+      "position": "below header",
+      "height": "55% do frame",
+      "margin_lateral": "44px",
+      "margin_top": "24px",
+      "blocks": [
+        {
+          "id": "pre-headline",
+          "type": "text",
+          "content": "E entao tem o contexto aqui.",
+          "font_size": "28px",
+          "font_style": "regular italic sans-serif",
+          "font_color": "rgba(255,255,255,0.65)",
+          "margin_bottom": "8px"
+        },
+        {
+          "id": "headline",
+          "type": "text-mixed",
+          "lines": [
+            {
+              "content": "PALAVRA COMUM",
+              "font_size": "96px",
+              "font_style": "ultra bold condensed, all caps",
+              "font_color": "#FFFFFF"
+            },
+            {
+              "content": "PALAVRA DESTAQUE.",
+              "font_size": "96px",
+              "font_style": "ultra bold condensed, all caps",
+              "font_color": "#E8722A",
+              "note": "mesmo laranja da versao clara — ancora visual"
+            }
+          ],
+          "margin_bottom": "20px"
+        },
+        {
+          "id": "subtext",
+          "type": "text",
+          "content": "Frase de apoio complementar aqui.",
+          "font_size": "30px",
+          "font_style": "regular sans-serif",
+          "font_color": "rgba(255,255,255,0.85)",
+          "margin_bottom": "12px"
+        },
+        {
+          "id": "body",
+          "type": "text",
+          "content": "Texto mais leve de fechamento ou contexto.",
+          "font_size": "26px",
+          "font_style": "regular sans-serif",
+          "font_color": "rgba(255,255,255,0.55)"
+        }
+      ]
+    },
+    "image": {
+      "position": "bottom half",
+      "height": "38% do frame",
+      "margin_lateral": "44px",
+      "margin_top": "20px",
+      "border_radius": "18px",
+      "overlay": {
+        "type": "none",
+        "note": "sem overlay escuro — a imagem respira no gradiente"
+      }
+    },
+    "footer": {
+      "height": "60px",
+      "position": "bottom",
+      "margin_lateral": "44px",
+      "note": "SLIDES INTERNOS: só username. CAPA: username + arraste pra ler. CTA: username + botões Salve/Siga.",
+      "left": {
+        "content": "@diego.spanevello",
+        "font_size": "20px",
+        "font_style": "regular sans-serif",
+        "font_color": "rgba(255,255,255,0.35)"
+      },
+      "center": {
+        "content": null,
+        "note": "vazio nos slides internos — usar 'arraste pra ler' + seta APENAS na capa"
+      },
+      "right": {
+        "note": "vazio nos slides internos — usar botões Salve/Siga APENAS no CTA",
+        "buttons_cta_only": [
+          {
+            "label": "Salve",
+            "style": "pill",
+            "background": "rgba(255,255,255,0.12)",
+            "font_color": "#FFFFFF"
+          },
+          {
+            "label": "Siga",
+            "style": "pill",
+            "background": "rgba(255,255,255,0.12)",
+            "font_color": "#FFFFFF"
+          }
+        ]
+      }
+    }
+  },
+  "markings_available": {
+    "color_swap": {
+      "accent_color": "#E8722A",
+      "usage": "palavra-chave na headline — mesmo comportamento da versao clara"
+    },
+    "underline": {
+      "color": "#E8722A",
+      "thickness": "3px",
+      "usage": "frase de apoio nivel 2"
+    },
+    "circle_handdrawn": {
+      "color": "#E8722A",
+      "style": "irregular, sketch",
+      "usage": "numero ou dado de impacto"
+    },
+    "pill_badge": {
+      "border_radius": "999px",
+      "padding": "6px 16px",
+      "colors": ["#2ECC71", "#E8722A", "rgba(255,255,255,0.15)"],
+      "usage": "label ou tag inline"
+    }
+  },
+  "alternancia": {
+    "padrao_sugerido": [
+      "CAPA    → escura",
+      "SLIDE 1 → clara",
+      "SLIDE 2 → escura",
+      "SLIDE 3 → clara",
+      "SLIDE 4 → escura",
+      "SLIDE 5 → clara",
+      "CTA     → escura"
+    ],
+    "logica": "o laranja #E8722A funciona nos dois fundos como ancora visual"
+  },
+  "negative_rules": [
+    "sem travessao",
+    "sem linhas divisorias entre secoes",
+    "maximo 3 tamanhos de fonte por slide",
+    "maximo 1 ideia central por slide",
+    "imagem nunca sem border radius",
+    "header sempre livre para Canva"
+  ]
+}

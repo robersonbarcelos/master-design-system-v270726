@@ -31,8 +31,9 @@
 - **JSON:** ver `references/json-templates.md` → Categoria 2
 
 ### GRUPO 3 — Resultado Macro — Cílios
-- **Quando usar:** awareness, mostrar qualidade do trabalho
-- **Layout:** macro close-up no olho + fade para cream na base + texto
+- **Quando usar:** awareness, mostrar qualidade do trabalho — **todos os serviços de lash** (lash extensions, lash lift, Korean lash lift, volume, híbrido)
+- **Layout:** macro close-up no olho, eye level + fade para cream na base + texto
+- **Ângulo:** eye level obrigatório — nunca overhead
 - **Paleta:** fundo escuro natural da foto, fade para cream, texto magenta
 - **JSON:** ver `references/json-templates.md` → Categoria 3
 
@@ -83,9 +84,36 @@
 
 ### SEMPRE incluir
 - Hex codes explícitos: `#9B1256` e `#FAF7F2`
-- Realismo de pele: `visible pores, peach fuzz, natural skin texture, realistic imperfections`
+- Realismo de pele: ver **Padrão de Skin Realism** abaixo — obrigatório em todo prompt com pessoa
 - Logo area: `LOGO AREA: bottom bar, clean solid background [cream #FAF7F2 OR magenta #9B1256], height approx 12% of frame, completely empty — reserved for logo placement`
 - Finalizar com: `Ultra photorealistic beauty editorial photography. NO watermark. NO handle. NO extra text.`
+
+### Padrão de Skin Realism (obrigatório em todo prompt com pessoa)
+
+Descoberto na produção de junho/2026 — combinação que gera textura de pele convincente e elimina o efeito plástico/airbrushed.
+
+**Fórmula aprovada — usar sempre no campo `materials.skin`:**
+```
+Fair/medium/dark [tom correto] skin with warm undertone. Visible open pores on forehead and cheekbones. Fine individual peach fuzz hairs catching light. Natural light [freckles / minor imperfections / uneven skin tone] scattered across nose and cheekbones. Matte finish — skin absorbs light rather than reflects. NO foundation finish, NO highlight powder, NO cosmetic gloss, NO airbrushed smoothing. Zero post-processing. Natural lived-in skin.
+```
+
+**Técnicas que ancoram o realismo:**
+| Técnica | Por que funciona |
+|---------|-----------------|
+| `freckles` ou `minor imperfections` | IA usa imperfeições como âncora de realismo — remove o efeito plastificado |
+| `face fills entire frame, no background` | Sem fundo para renderizar, toda potência vai para a textura da pele |
+| `peach fuzz as individual translucent hairs` | Força renderização de pelo fino — incompatível com pele plástica |
+| `skin absorbs light rather than reflects` | Elimina specular highlights e gloss cosmético |
+| `zero post-processing` | Instrução direta anti-retoque |
+| NUNCA usar `perfect`, `flawless`, `smooth` | Essas palavras ativam o modo plastificado da IA |
+
+**No campo `quality.avoid` — sempre incluir:**
+```
+plastic skin, airbrushed skin, poreless skin, CGI smoothness, wax texture,
+cosmetic sheen, specular hotspot on forehead, beauty retouch, frequency separation
+```
+
+**Referência fotográfica padrão:** Peter Lindbergh + Paolo Roversi — matte, unretouched, visible pores, peach fuzz.
 
 ### Negative prompt padrão completo
 ```
@@ -103,7 +131,21 @@ logo visible in image, text in logo area, measurements on image, numbers on imag
 
 ---
 
-## 05 | Elementos Visuais da Marca
+## 05 | Composições Aprovadas por Tipo de Conteúdo
+
+| Composição | Ângulo | Quando usar |
+|-----------|--------|-------------|
+| Face fills entire frame, no background | Eye level | Realismo de pele — qualquer serviço |
+| Macro eye close-up | Eye level obrigatório | Todos os serviços de lash (extensão, lash lift, Korean lash lift, volume, híbrido) |
+| Rosto inclinado chin-up | Eye level/low | Confiança, poder, brow lamination |
+| 3/4 angle sutil | Eye level | Profundidade, editorial suave |
+| Close-up com caixa de cor no lower zone | Eye level | Post informativo com texto longo |
+
+> ⚠️ Overhead top-down: evitar — gera resultados ruins. Testado e reprovado.
+
+---
+
+## 06 | Elementos Visuais da Marca
 
 | Elemento | Uso | Regra |
 |----------|-----|-------|
@@ -115,7 +157,7 @@ logo visible in image, text in logo area, measurements on image, numbers on imag
 
 ---
 
-## 06 | Exemplos de Posts Reais (Referência)
+## 07 | Exemplos de Posts Reais (Referência)
 
 ### ANTES_DEPOIS_FEED — 4:5 Feed
 Fundo magenta full, 2 fotos emolduradas sobrepostas, labels BEFORE/AFTER, sparkle ✦, "Lashes" script decorativo no rodapé

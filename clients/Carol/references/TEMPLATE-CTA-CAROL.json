@@ -1,0 +1,125 @@
+{
+  "template": "carrossel-carol",
+  "tipo": "cta",
+  "format": {
+    "aspect_ratio": "4:5",
+    "resolution": "1080x1350px",
+    "safe_area": "952x1222px (64px mínimo todos os lados)"
+  },
+
+  "versao_padrao": {
+    "nome": "V1 Verde Floresta — fechamento forte",
+    "background": { "type": "solid", "color": "#273d29" },
+    "note": "CTA sempre na versão escura — fecha o carrossel com identidade e força"
+  },
+
+  "regra_botoes": {
+    "note": "Botões Salve/Siga NÃO vão no prompt de imagem — são adicionados manualmente no Canva após a geração."
+  },
+
+  "zones": {
+    "header": {
+      "height": "80px",
+      "note": "DEIXAR LIVRE — Canva"
+    },
+    "content": {
+      "position": "below header",
+      "height": "55% do frame",
+      "margin_lateral": "44px",
+      "margin_top": "24px",
+      "blocks": [
+        {
+          "id": "pre-headline",
+          "type": "text",
+          "content": "[label da ação — ex: gostou? / quer esse look?]",
+          "font": "Nunito Sans Regular",
+          "font_size": "22px",
+          "font_style": "regular",
+          "font_color": "rgba(229,222,211,0.55)",
+          "margin_bottom": "8px"
+        },
+        {
+          "id": "headline",
+          "type": "text-mixed",
+          "lines": [
+            {
+              "content": "[AÇÃO PRINCIPAL]",
+              "font": "Halant Bold",
+              "font_size": "72-88px",
+              "font_color": "#e5ded3"
+            },
+            {
+              "content": "[acento.]",
+              "font": "Halant Bold Italic",
+              "font_size": "72-88px",
+              "font_color": "#9db4a1",
+              "note": "ancora visual Salva — mesmo padrão dos slides internos"
+            }
+          ],
+          "margin_bottom": "16px"
+        },
+        {
+          "id": "subtext",
+          "type": "text",
+          "content": "[instrução curta — ex: clica no link da bio / manda mensagem]",
+          "font": "Halant Regular",
+          "font_size": "28px",
+          "font_color": "rgba(229,222,211,0.75)",
+          "margin_bottom": "20px"
+        }
+      ]
+    },
+    "image": {
+      "height": "38% do frame",
+      "margin_lateral": "44px",
+      "border_radius": "18px",
+      "note": "foto da peça apresentada no carrossel — consistência visual"
+    },
+    "footer": {
+      "height": "60px",
+      "margin_lateral": "44px",
+      "left": {
+        "content": "@carolstaggemeier",
+        "font": "Nunito Sans",
+        "font_size": "20px",
+        "font_color": "rgba(229,222,211,0.35)"
+      },
+      "right": {
+        "note": "APENAS no CTA",
+        "buttons": [
+          {
+            "label": "Salve",
+            "style": "pill",
+            "border_radius": "999px",
+            "padding": "6px 14px",
+            "background": "rgba(229,222,211,0.12)",
+            "font_color": "#e5ded3",
+            "font_size": "18px"
+          },
+          {
+            "label": "Siga",
+            "style": "pill",
+            "border_radius": "999px",
+            "padding": "6px 14px",
+            "background": "rgba(229,222,211,0.12)",
+            "font_color": "#e5ded3",
+            "font_size": "18px"
+          }
+        ]
+      }
+    }
+  },
+
+  "markings": {
+    "color_swap": { "palavra_acento": "#9db4a1", "resto": "#e5ded3" },
+    "pill_badge_opcional": { "bg": "#9db4a1", "text": "#273d29", "uso": "label de urgência — ex: 'últimas peças'" }
+  },
+
+  "negative_rules": [
+    "sem travessao (—)",
+    "sem botoes Salve/Siga nos slides internos — APENAS no CTA",
+    "sem mais de 1 CTA por carrossel",
+    "maximo 3 tamanhos de fonte",
+    "header sempre livre para o Canva"
+  ]
+}

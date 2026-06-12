@@ -89,6 +89,36 @@ Every prompt must follow this structure. Populate each section based on what you
 
 These rules determine quality. Follow them closely.
 
+0a. **Skin realism is mandatory on every prompt featuring a person.** When the image contains a human subject, the `materials.skin` field must follow the Realistic Skin Standard below. This prevents the AI from defaulting to plastic/airbrushed/CGI skin.
+
+### Realistic Skin Standard
+
+Apply this whenever a person is present in the prompt. Discovered through production testing — this combination consistently produces convincing skin texture and eliminates the plastic/airbrushed effect.
+
+**Formula for `materials.skin`:**
+> "[fair/medium/dark] skin, [warm/cool/neutral] undertone. Visible open pores on forehead and cheekbones. Fine individual peach fuzz hairs catching light. Natural [freckles / minor imperfections / uneven skin tone] scattered across nose and cheekbones. Matte finish — skin absorbs light rather than reflects. NO foundation finish, NO highlight powder, NO cosmetic gloss, NO airbrushed smoothing. Zero post-processing. Natural lived-in skin."
+
+**Techniques that anchor realism:**
+
+| Technique | Why it works |
+|-----------|-------------|
+| `freckles` or `minor imperfections` | AI uses imperfections as realism anchor — removes plastic effect |
+| `face fills entire frame, no background` | No backdrop to render — full processing power goes to skin texture |
+| `peach fuzz as individual translucent hairs` | Forces fine hair rendering — incompatible with plastic skin |
+| `skin absorbs light rather than reflects` | Eliminates specular highlights and cosmetic gloss |
+| `zero post-processing` | Direct anti-retouch instruction |
+| NEVER use `perfect`, `flawless`, `smooth` | These words activate AI's plastified mode |
+
+**Always add to `quality.avoid`:**
+```
+plastic skin, airbrushed skin, poreless skin, CGI smoothness, wax texture,
+cosmetic sheen, specular hotspot on forehead, beauty retouch, frequency separation
+```
+
+**Reference standard:** Peter Lindbergh + Paolo Roversi — matte, unretouched, visible pores, peach fuzz.
+
+---
+
 0. **Safe area is mandatory on every social media creative.** Always include a `safe_area` field inside `composition` for any social/ad format (feed, stories, carousel cover, ads). Standard rule: minimum 64px padding on all sides — no text, no icons, no CTA elements touching edges. State the inner safe zone explicitly (e.g., `952x1222px safe zone inside 1080x1350px frame`). This prevents elements from being cropped by platform UI, reels borders, or ad previews.
 
 1. **Be specific, not generic.** "Warm golden-hour sunlight raking across the subject at 15 degrees from camera-left" beats "natural lighting." Precision is what makes the output useful.

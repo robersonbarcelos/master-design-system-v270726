@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hero — 5 Variações</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,700;0,900;1,900&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --orange: #E84000;
+  --orange-dark: #8C2000;
+  --orange-glow: rgba(232,64,0,0.18);
+  --orange-edge: rgba(232,64,0,0.55);
+  --bg: oklch(8% 0.005 30);
+  --surface: rgba(255,255,255,0.04);
+  --ink: #fff;
+  --ink-2: rgba(255,255,255,0.65);
+  --ink-3: rgba(255,255,255,0.38);
+  --f-display: 'Inter Tight', sans-serif;
+  --f-body: 'Inter', sans-serif;
+}
+
+body {
+  background: #060504;
+  font-family: var(--f-body);
+  color: var(--ink);
+}
+
+/* ── Navigation between variants ── */
+.nav-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: oklch(6% 0.01 30);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  gap: 4px;
+  padding: 12px 24px;
+  overflow-x: auto;
+}
+.nav-bar a {
+  white-space: nowrap;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: var(--f-display);
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-3);
+  border: 1px solid transparent;
+  transition: all .15s;
+}
+.nav-bar a:hover { color: var(--ink); border-color: rgba(255,255,255,0.12); }
+
+.variant-label {
+  font-family: var(--f-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--orange);
+  padding: 48px 48px 0;
+  opacity: .7;
+}
+
+/* ═══════════════════════════════════════════════
+   SHARED NAV SHELL
+═══════════════════════════════════════════════ */
+.shell-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  position: relative;
+  z-index: 10;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-hex {
+  width: 36px; height: 36px;
+  background: var(--orange);
+  clip-path: polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);
+}
+.logo-text { font-family: var(--f-display); font-weight: 900; font-size: 14px; letter-spacing: .06em; }
+.logo-sub { font-size: 9px; letter-spacing: .18em; color: var(--ink-3); text-transform: uppercase; margin-top: 1px; }
+.nav-cta {
+  background: radial-gradient(ellipse at 40% 40%, #FF6020, var(--orange) 60%, var(--orange-dark));
+  color: #fff;
+  border: none;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: .02em;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--orange);
+  border: 1px solid rgba(232,64,0,0.35);
+  border-radius: 999px;
+  padding: 5px 14px;
+}
+.eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+.hero-title {
+  font-family: var(--f-display);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -.03em;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--orange);
+}
+.hero-lead {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 52ch;
+}
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: radial-gradient(ellipse at 40% 40%, #FF6020, var(--orange) 60%, var(--orange-dark));
+  color: #fff;
+  border: none;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 17px;
+  padding: 18px 36px;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: .01em;
+  text-decoration: none;
+}
+.hero-btn-arrow { font-size: 20px; }
+.hero-meta {
+  font-family: var(--f-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* separator between variants */
+.sep { height: 2px; background: rgba(255,255,255,0.04); margin: 0; }
+
+
+/* ═══════════════════════════════════════════════
+   V1 — GRADIENT DISSOLVE
+   Image bleeds into dark background via mask.
+   No border, no card. Diego emerges from dark.
+═══════════════════════════════════════════════ */
+#v1 {
+  background: var(--bg);
+  overflow: hidden;
+  position: relative;
+}
+.v1-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 640px;
+  position: relative;
+}
+.v1-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+  padding: 64px 48px 64px 48px;
+  position: relative;
+  z-index: 2;
+}
+.v1-content .hero-title { font-size: clamp(44px, 4.5vw, 72px); }
+.v1-img-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.v1-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+  display: block;
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.2) 12%, black 35%, black 80%, transparent 100%),
+              linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.2) 12%, black 35%, black 80%, transparent 100%),
+                      linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-composite: source-in;
+}
+.v1-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(232,64,0,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+
+/* ═══════════════════════════════════════════════
+   V2 — FULL BLEED RIGHT
+   Image edge-to-edge on right half. Orange
+   vertical slash divides. No padding on image.
+═══════════════════════════════════════════════ */
+#v2 {
+  background: var(--bg);
+  overflow: hidden;
+}
+.v2-hero {
+  display: grid;
+  grid-template-columns: 48% 52%;
+  min-height: 640px;
+}
+.v2-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+  padding: 64px 40px 64px 48px;
+}
+.v2-content .hero-title { font-size: clamp(40px, 4vw, 66px); }
+.v2-img-col {
+  position: relative;
+  overflow: hidden;
+}
+.v2-img-col::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, transparent, var(--orange) 30%, var(--orange) 70%, transparent);
+  z-index: 2;
+}
+.v2-img-col::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to left, transparent 60%, var(--bg) 100%);
+  z-index: 1;
+}
+.v2-img-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+  display: block;
+}
+.v2-badge {
+  position: absolute;
+  bottom: 40px;
+  left: 32px;
+  z-index: 3;
+  background: rgba(10,10,10,0.85);
+  border: 1px solid rgba(232,64,0,0.4);
+  border-radius: 6px;
+  padding: 12px 18px;
+  font-family: var(--f-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-2);
+  letter-spacing: .04em;
+  backdrop-filter: blur(8px);
+}
+.v2-badge strong { color: var(--orange); display: block; font-size: 20px; margin-bottom: 2px; }
+
+
+/* ═══════════════════════════════════════════════
+   V3 — CINEMATIC OVERLAY
+   Image is full-bleed background. Heavy
+   dark gradient left. Text reads over it.
+   Phone is the focal point — center-right.
+═══════════════════════════════════════════════ */
+#v3 {
+  background: var(--bg);
+  overflow: hidden;
+}
+.v3-hero {
+  position: relative;
+  min-height: 680px;
+  display: flex;
+  align-items: center;
+}
+.v3-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 65% center;
+  display: block;
+}
+.v3-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, oklch(8% 0.005 30) 38%, rgba(6,5,4,0.7) 62%, rgba(6,5,4,0.25) 100%),
+    linear-gradient(to bottom, oklch(8% 0.005 30) 0%, transparent 12%, transparent 88%, oklch(8% 0.005 30) 100%);
+}
+.v3-content {
+  position: relative;
+  z-index: 2;
+  padding: 64px 48px;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.v3-content .hero-title { font-size: clamp(44px, 4.5vw, 74px); }
+.v3-grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: .35;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+
+/* ═══════════════════════════════════════════════
+   V4 — DEPTH FLOAT
+   Image positioned below baseline of hero,
+   partially cut off at bottom. Feels physical.
+   Orange glow radiates from behind image.
+   Text high, image low — depth plane difference.
+═══════════════════════════════════════════════ */
+#v4 {
+  background: var(--bg);
+  overflow: hidden;
+}
+.v4-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 700px;
+  position: relative;
+  align-items: start;
+}
+.v4-content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 80px 40px 64px 48px;
+  position: relative;
+  z-index: 2;
+}
+.v4-content .hero-title { font-size: clamp(44px, 4.5vw, 72px); }
+.v4-img-zone {
+  position: relative;
+  align-self: stretch;
+  padding-top: 48px;
+}
+.v4-glow-behind {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(232,64,0,0.22) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+.v4-img-zone img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+  mask-image: linear-gradient(to bottom, black 55%, transparent 100%),
+              linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%),
+                      linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  transform: scale(1.04) translateY(32px);
+  transform-origin: top center;
+}
+
+
+/* ═══════════════════════════════════════════════
+   V5 — FRAME BREAK
+   Image breaks out of its zone, phone overlaps
+   the left text column slightly. Asymmetric.
+   Feels editorial, not AI-placed.
+   Horizontal orange bar cuts across bottom.
+═══════════════════════════════════════════════ */
+#v5 {
+  background: var(--bg);
+  overflow: hidden;
+}
+.v5-hero {
+  position: relative;
+  min-height: 720px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.v5-content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 88px 24px 100px 48px;
+  position: relative;
+  z-index: 2;
+}
+.v5-content .hero-title { font-size: clamp(44px, 4.5vw, 74px); }
+.v5-img-zone {
+  position: relative;
+  overflow: visible;
+}
+.v5-img-zone img {
+  position: absolute;
+  top: 24px;
+  left: -48px;
+  width: calc(100% + 96px);
+  height: calc(100% - 24px);
+  object-fit: cover;
+  object-position: left top;
+  mask-image:
+    linear-gradient(to right, transparent 0%, black 14%, black 85%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, black 5%, black 90%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, black 14%, black 85%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, black 5%, black 90%, transparent 100%);
+  -webkit-mask-composite: source-in;
+}
+.v5-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--orange) 20%, var(--orange) 80%, transparent);
+  z-index: 3;
+}
+.v5-number {
+  font-family: var(--f-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.v5-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.v5-pill {
+  font-family: var(--f-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  color: var(--ink-2);
+  padding: 5px 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 3px;
+}
+.v5-pill.orange { border-color: rgba(232,64,0,0.5); color: var(--orange); }
+</style>
+</head>
+<body>
+
+<div class="nav-bar">
+  <a href="#v1">V1 · Dissolve</a>
+  <a href="#v2">V2 · Bleed Split</a>
+  <a href="#v3">V3 · Cinematic</a>
+  <a href="#v4">V4 · Depth Float</a>
+  <a href="#v5">V5 · Frame Break</a>
+</div>
+
+
+<!-- ═══ V1 — GRADIENT DISSOLVE ═══ -->
+<p class="variant-label" id="v1">V1 · Gradient Dissolve — imagem emerge do escuro, sem bordas</p>
+<section>
+  <nav class="shell-nav" style="background:var(--bg)">
+    <div class="logo">
+      <div class="logo-hex"></div>
+      <div><div class="logo-text">INTUS HUB</div><div class="logo-sub">Curso Rápido · Super Agente</div></div>
+    </div>
+    <button class="nav-cta">Quero meu Super Agente →</button>
+  </nav>
+  <div class="v1-hero">
+    <div class="v1-content">
+      <span class="eyebrow">Curso · Crie um Super Agente de IA</span>
+      <h1 class="hero-title">Chega de<br/>IA genérica.<br/><em>Crie um Super<br/>Agente de verdade.</em></h1>
+      <p class="hero-lead">A primeira versão do seu agente pode ir ao ar ainda hoje. Com contexto, memória, identidade e rotina real.</p>
+      <div>
+        <a href="#" class="hero-btn">Quero meu Super Agente <span class="hero-btn-arrow">→</span></a>
+        <p class="hero-meta" style="text-align:left;margin-top:12px;">7 dias de garantia</p>
+      </div>
+    </div>
+    <div class="v1-img-wrap">
+      <div class="v1-glow"></div>
+      <img src="img/heeerochat01.png" alt="Diego segurando celular com Super Agente IA"/>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+
+<!-- ═══ V2 — FULL BLEED RIGHT ═══ -->
+<p class="variant-label" id="v2">V2 · Full Bleed Split — imagem cobre metade, corte com linha laranja</p>
+<section>
+  <nav class="shell-nav" style="background:var(--bg)">
+    <div class="logo">
+      <div class="logo-hex"></div>
+      <div><div class="logo-text">INTUS HUB</div><div class="logo-sub">Curso Rápido · Super Agente</div></div>
+    </div>
+    <button class="nav-cta">Quero meu Super Agente →</button>
+  </nav>
+  <div class="v2-hero">
+    <div class="v2-content">
+      <span class="eyebrow">Curso · Crie um Super Agente de IA</span>
+      <h1 class="hero-title">Chega de<br/>IA genérica.<br/><em>Crie um Super<br/>Agente de verdade.</em></h1>
+      <p class="hero-lead">Em menos de uma tarde, seu agente estará respondendo no seu celular.</p>
+      <div>
+        <a href="#" class="hero-btn">Quero meu Super Agente <span class="hero-btn-arrow">→</span></a>
+        <p class="hero-meta" style="text-align:left;margin-top:12px;">7 dias de garantia</p>
+      </div>
+    </div>
+    <div class="v2-img-col">
+      <img src="img/heeerochat01.png" alt="Diego com Super Agente IA"/>
+      <div class="v2-badge"><strong>Super Agente IA</strong>trabalhando 24/7 por você</div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+
+<!-- ═══ V3 — CINEMATIC OVERLAY ═══ -->
+<p class="variant-label" id="v3">V3 · Cinematic Full Bleed — imagem é o fundo, texto flutua sobre gradiente</p>
+<section>
+  <nav class="shell-nav" style="position:relative;z-index:10;background:transparent">
+    <div class="logo">
+      <div class="logo-hex"></div>
+      <div><div class="logo-text">INTUS HUB</div><div class="logo-sub">Curso Rápido · Super Agente</div></div>
+    </div>
+    <button class="nav-cta">Quero meu Super Agente →</button>
+  </nav>
+  <div class="v3-hero">
+    <img class="v3-bg-img" src="img/heeerochat01.png" alt="Diego com Super Agente IA"/>
+    <div class="v3-overlay"></div>
+    <div class="v3-grain"></div>
+    <div class="v3-content">
+      <span class="eyebrow">Curso · Crie um Super Agente de IA</span>
+      <h1 class="hero-title">Chega de<br/>IA genérica.<br/><em>Crie um Super<br/>Agente de verdade.</em></h1>
+      <p class="hero-lead">A primeira versão do seu agente pode ir ao ar ainda hoje.</p>
+      <div>
+        <a href="#" class="hero-btn">Quero meu Super Agente <span class="hero-btn-arrow">→</span></a>
+        <p class="hero-meta" style="text-align:left;margin-top:12px;">7 dias de garantia</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+
+<!-- ═══ V4 — DEPTH FLOAT ═══ -->
+<p class="variant-label" id="v4">V4 · Depth Float — imagem descida, cortada embaixo, glow atrás dela</p>
+<section>
+  <nav class="shell-nav" style="background:var(--bg)">
+    <div class="logo">
+      <div class="logo-hex"></div>
+      <div><div class="logo-text">INTUS HUB</div><div class="logo-sub">Curso Rápido · Super Agente</div></div>
+    </div>
+    <button class="nav-cta">Quero meu Super Agente →</button>
+  </nav>
+  <div class="v4-hero">
+    <div class="v4-content">
+      <span class="eyebrow">Curso · Crie um Super Agente de IA</span>
+      <h1 class="hero-title">Chega de<br/>IA genérica.<br/><em>Crie um Super<br/>Agente de verdade.</em></h1>
+      <p class="hero-lead">Você aprende o que importa: transformar um agente genérico em colaborador com identidade, memória e rotina.</p>
+      <div>
+        <a href="#" class="hero-btn">Quero meu Super Agente <span class="hero-btn-arrow">→</span></a>
+        <p class="hero-meta" style="text-align:left;margin-top:12px;">7 dias de garantia</p>
+      </div>
+    </div>
+    <div class="v4-img-zone">
+      <div class="v4-glow-behind"></div>
+      <img src="img/heeerochat01.png" alt="Diego com Super Agente IA"/>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+
+<!-- ═══ V5 — FRAME BREAK ═══ -->
+<p class="variant-label" id="v5">V5 · Frame Break — imagem invade a zona do texto, composição assimétrica</p>
+<section style="background:var(--bg)">
+  <nav class="shell-nav" style="background:var(--bg)">
+    <div class="logo">
+      <div class="logo-hex"></div>
+      <div><div class="logo-text">INTUS HUB</div><div class="logo-sub">Curso Rápido · Super Agente</div></div>
+    </div>
+    <button class="nav-cta">Quero meu Super Agente →</button>
+  </nav>
+  <div class="v5-hero">
+    <div class="v5-content">
+      <span class="eyebrow">Curso · Crie um Super Agente de IA</span>
+      <h1 class="hero-title">Chega de<br/>IA genérica.<br/><em>Crie um Super<br/>Agente de verdade.</em></h1>
+      <p class="hero-lead">Em menos de uma tarde, seu agente estará respondendo no seu celular.</p>
+      <div class="v5-pills">
+        <span class="v5-pill orange">4 módulos</span>
+        <span class="v5-pill">Kit de Ignição</span>
+        <span class="v5-pill">WhatsApp 12 meses</span>
+        <span class="v5-pill orange">7 dias de garantia</span>
+      </div>
+      <div>
+        <a href="#" class="hero-btn">Quero meu Super Agente <span class="hero-btn-arrow">→</span></a>
+        <p class="hero-meta" style="text-align:left;margin-top:12px;">7 dias de garantia</p>
+      </div>
+    </div>
+    <div class="v5-img-zone">
+      <img src="img/heeerochat01.png" alt="Diego com Super Agente IA"/>
+    </div>
+    <div class="v5-bar"></div>
+  </div>
+</section>
+
+<div style="height:80px;background:var(--bg)"></div>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+{
+  "template": "carrossel-twitter-style",
+  "version": "clara",
+  "slide": "capa",
+  "ideia": "B",
+  "descricao": "Numero em destaque com circulo manuscrito — contraste antes/depois, agente vs ChatGPT",
+
+  "format": {
+    "aspect_ratio": "4:5",
+    "resolution": "1080x1350px",
+    "background_color": "#FFFFFF"
+  },
+
+  "zones": {
+    "header": {
+      "height": "80px",
+      "position": "top",
+      "note": "DEIXAR LIVRE — adicionar manualmente no Canva: foto de perfil + @intushub + categoria"
+    },
+
+    "content": {
+      "position": "below header",
+      "height": "55% do frame",
+      "margin_lateral": "44px",
+      "margin_top": "24px",
+      "blocks": [
+        {
+          "id": "pre-headline",
+          "type": "text",
+          "content": "Cada vez que você abre o ChatGPT,",
+          "font_size": "28px",
+          "font_style": "regular sans-serif",
+          "font_color": "#666666",
+          "margin_bottom": "10px"
+        },
+        {
+          "id": "headline-linha-1",
+          "type": "text",
+          "content": "RECOMEÇA",
+          "font_size": "96px",
+          "font_style": "ultra bold condensed, all caps",
+          "font_color": "#1A1A1A",
+          "margin_bottom": "0px"
+        },
+        {
+          "id": "headline-linha-2",
+          "type": "text",
+          "content": "DO ZERO.",
+          "font_size": "96px",
+          "font_style": "ultra bold condensed, all caps",
+          "font_color": "#E8722A",
+          "note": "linha inteira em laranja — o peso do problema esta aqui",
+          "margin_bottom": "20px"
+        },
+        {
+          "id": "subtext",
+          "type": "text-marked",
+          "content": "Seu agente não faz isso.",
+          "font_size": "34px",
+          "font_style": "regular sans-serif",
+          "font_color": "#1A1A1A",
+          "marking": {
+            "type": "underline",
+            "color": "#E8722A",
+            "thickness": "3px"
+          },
+          "note": "ATENCAO: nao acumular marcacoes. O sublinhado esta aqui, o color_swap esta na headline. Escolher um dos dois na producao final.",
+          "margin_bottom": "16px"
+        },
+        {
+          "id": "body",
+          "type": "text",
+          "content": "3 diferenças concretas. Arraste para ver.",
+          "font_size": "28px",
+          "font_style": "regular sans-serif",
+          "font_color": "#666666",
+          "note": "O '3' recebe circulo manuscrito laranja desenhado no Canva sobre o texto"
+        }
+      ]
+    },
+
+    "image": {
+      "position": "bottom half",
+      "height": "35% do frame",
+      "margin_lateral": "44px",
+      "margin_top": "20px",
+      "border_radius": "18px",
+      "tipo": "render 3D gerado por IA",
+      "descricao": "Agente 3D (personagem robo estilizado, nao humanoide cliche) visto de costas, olhando para uma tela com fluxo de dados ou interface. Cena com fundo bege/creme claro. Ombros e cabeca do personagem podem sair levemente do frame (breakout permitido para 3D).",
+      "instrucao_producao": "Gerar com IA: estilo 3D render, personagem abstrato tipo assistente digital, sem rosto humanoide. Fundo bege claro para contrastar com fundo branco do template. Upper body pode fazer breakout acima do border radius.",
+      "prompt_sugerido": "3D render of a minimal AI agent character, viewed from behind, facing a glowing data screen, beige cream background, no face, abstract geometric head, orange accent color, clean studio lighting, upper body breaks slightly above frame"
+    },
+
+    "footer": {
+      "height": "60px",
+      "position": "bottom",
+      "margin_lateral": "44px",
+      "left": {
+        "content": "@intushub",
+        "font_size": "20px",
+        "font_style": "regular sans-serif",
+        "font_color": "#AAAAAA"
+      },
+      "center": {
+        "content": "arraste pra ler →",
+        "font_size": "20px",
+        "font_style": "regular sans-serif",
+        "font_color": "#AAAAAA"
+      },
+      "right": null
+    }
+  },
+
+  "marking_used": {
+    "type": "circle_handdrawn",
+    "element": "body — numero '3'",
+    "accent_color": "#E8722A",
+    "note": "Circulo manuscrito irregular ao redor do '3' no body. Desenhado manualmente no Canva. E a unica marcacao do slide — remover o sublinhado do subtext se usar o circulo aqui."
+  },
+
+  "marking_decision": {
+    "regra": "maximo 1 marcacao por slide",
+    "opcao_1": "color_swap na headline (DO ZERO. em laranja) + circulo no '3' — INVALIDO, sao 2 marcacoes",
+    "opcao_recomendada": "color_swap na headline (DO ZERO.) como marcacao principal. Corpo sem circulo. Subtext sem sublinhado.",
+    "alternativa": "Remover color_swap da headline, deixar tudo preto, e usar so o circulo no '3' do body."
+  },
+
+  "negative_rules_check": [
+    "sem travessao — ok",
+    "sem linhas divisorias — ok",
+    "maximo 3 tamanhos de fonte — ok: 96px / 34px / 28px",
+    "maximo 1 ideia central — ok: ChatGPT recomeça, agente nao",
+    "imagem com border radius — ok: 18px",
+    "header livre para Canva — ok",
+    "maximo 1 marcacao — ATENCAO: ver marking_decision acima antes de produzir"
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "template": "carrossel-carol",
+  "version": "capa",
+  "slide": "capa",
+  "descricao": "4 estruturas visuais oficiais de capa. A cada novo carrossel, gerar variações e o usuário escolhe.",
+  "format": {
+    "aspect_ratio": "4:5",
+    "resolution": "1080x1350px",
+    "safe_area": "952x1222px (64px mínimo todos os lados)",
+    "margin_lateral": "44px"
+  },
+
+  "skin_realism_standard": {
+    "note": "OBRIGATÓRIO em todo prompt que contenha pessoa. Aplicar no campo materials.skin.",
+    "formula": "[fair/medium/dark] skin, [warm/cool/neutral] undertone. Visible open pores on forehead and cheekbones. Fine individual peach fuzz hairs catching light. Natural [freckles / minor imperfections / uneven skin tone] scattered across nose and cheekbones. Matte finish — skin absorbs light rather than reflects. NO foundation finish, NO highlight powder, NO cosmetic gloss, NO airbrushed smoothing. Zero post-processing. Natural lived-in skin.",
+    "quality_avoid_obrigatorio": ["plastic skin", "airbrushed skin", "poreless skin", "CGI smoothness", "wax texture", "cosmetic sheen", "specular hotspot on forehead", "beauty retouch", "frequency separation"],
+    "reference_standard": "Peter Lindbergh + Paolo Roversi — matte, unretouched, visible pores, peach fuzz"
+  },
+
+  "header_padrao": {
+    "note": "FIXO em todos os cards — capa, slides e CTA. Só a cor muda conforme o fundo.",
+    "height": "80px",
+    "position": "top",
+    "layout": "two-column",
+    "left": {
+      "content": "CAROL STAGGEMEIER",
+      "font": "Nunito Sans Bold",
+      "font_size": "18px",
+      "font_style": "all caps, letter-spacing 3px"
+    },
+    "right": {
+      "content": "MODA AUTORAL",
+      "font": "Nunito Sans Regular",
+      "font_size": "18px",
+      "font_style": "all caps, letter-spacing 3px"
+    },
+    "separator": {
+      "type": "horizontal line",
+      "thickness": "1px",
+      "opacity": 0.3,
+      "position": "below header text"
+    },
+    "cores": {
+      "fundo_escuro": "rgba(229,222,211,0.55)",
+      "fundo_claro": "rgba(39,61,41,0.45)"
+    }
+  },
+
+  "estruturas": {
+
+    "A_layering_tipo_modelo": {
+      "nome": "Layering — Tipo atrás da modelo",
+      "referencia": "imagem Autoral. — fundo linho, modelo P&B, palavra gigante atrás da figura",
+      "quando_usar": "editorial silencioso, palavra-conceito, identidade de marca",
+      "background": {
+        "type": "solid",
+        "opcoes": ["#e5ded3 (linho)", "#c2b6a5 (areia)"],
+        "note": "sempre fundo claro — o contraste vem da foto P&B e do tipo escuro"
+      },
+      "foto": {
+        "tipo": "modelo em P&B desaturado",
+        "posicao": "centro-baixo, ocupa 60–70% da altura do frame",
+        "z_index": "acima do texto — a modelo 'fura' a palavra"
+      },
+      "tipografia": {
+        "headline": {
+          "font": "Halant Bold",
+          "font_size": "140–180px",
+          "color": "#4c3529",
+          "posicao": "centro vertical, atrás da modelo",
+          "conteudo": "[palavra conceito fornecida na produção]."
+        },
+        "monogram": {
+          "content": "CS",
+          "font": "Halant Regular",
+          "font_size": "14px",
+          "color": "#9db4a1",
+          "posicao": "canto inferior direito"
+        }
+      },
+      "footer": {
+        "content": "arraste para ver →",
+        "posicao": "inferior centralizado",
+        "font_size": "18px",
+        "color": "rgba(76,53,41,0.50)"
+      }
+    },
+
+    "B_tipo_sobre_foto_fullbleed": {
+      "nome": "Tipo sobre foto — Full-bleed",
+      "referencia": "imagem Vestido Organza — foto ocupa 100% do frame, tipo no terço inferior",
+      "quando_usar": "produto em cena, lançamento, campanha com foto de impacto",
+      "background": {
+        "type": "photo full-bleed",
+        "source": "foto fornecida na produção",
+        "overlay": {
+          "note": "overlay escuro APENAS na zona do texto se necessário para legibilidade",
+          "type": "gradient bottom",
+          "color": "#273d29",
+          "opacity": "0–25%"
+        }
+      },
+      "foto": {
+        "tipo": "campanha colorida — full-bleed 100% do frame",
+        "z_index": "abaixo do texto"
+      },
+      "tipografia": {
+        "headline": {
+          "font": "Halant Bold",
+          "font_size": "72–96px",
+          "color": "#e5ded3",
+          "posicao": "terço inferior esquerdo, alinhado à margem 44px",
+          "conteudo": "[nome da peça fornecido na produção]."
+        },
+        "sub": {
+          "font": "Nunito Sans Regular",
+          "font_size": "22px",
+          "color": "rgba(229,222,211,0.70)",
+          "font_style": "all caps, letter-spacing 1.5px",
+          "conteudo": "[label — ex: NOVA COLEÇÃO · INVERNO 2025]"
+        }
+      },
+      "cta_capsule": {
+        "note": "opcional — só se o carrossel for de produto específico",
+        "label": "ver a peça →",
+        "border_radius": "999px",
+        "background": "rgba(39,61,41,0.70)",
+        "font": "Nunito Sans",
+        "font_size": "18px",
+        "color": "#e5ded3",
+        "posicao": "abaixo da headline, alinhado à esquerda"
+      },
+      "footer": {
+        "content": "arraste para ver →",
+        "posicao": "inferior centralizado",
+        "font_size": "18px",
+        "color": "rgba(229,222,211,0.45)"
+      }
+    },
+
+    "C_bloco_tipo_gigante": {
+      "nome": "Bloco — Tipo gigante com foto integrada",
+      "referencia": "CONJUNTO VELOUR — headline em bloco ocupa o frame, foto como contexto",
+      "quando_usar": "nome da peça como herói, campanha direta, lote novo",
+      "background": {
+        "type": "photo full-bleed OU solid",
+        "opcoes_solid": ["#273d29 (verde)", "#4c3529 (café)"],
+        "photo": "foto da campanha — editorial terracota, modelo integrada ao texto"
+      },
+      "foto": {
+        "tipo": "campanha colorida — integrada ao bloco de texto",
+        "z_index": "atrás do texto"
+      },
+      "tipografia": {
+        "headline": {
+          "font": "Halant Bold",
+          "font_size": "96–130px",
+          "color_foto": "#e5ded3",
+          "color_solid_escuro": "#e5ded3",
+          "posicao": "inferior esquerdo, alinhado à margem 44px, ocupa 2–3 linhas",
+          "conteudo": "[nome da peça em 2 linhas — fornecido na produção]"
+        },
+        "sub": {
+          "font": "Nunito Sans Regular",
+          "font_size": "18px",
+          "color": "rgba(229,222,211,0.65)",
+          "font_style": "all caps, letter-spacing 2px",
+          "conteudo": "[LABEL · TEMPORADA] — ex: NOVA COLEÇÃO · INVERNO 2025"
+        }
+      },
+      "footer": {
+        "content": "arraste para ver →",
+        "posicao": "inferior centralizado",
+        "font_size": "18px",
+        "color": "rgba(229,222,211,0.45)"
+      }
+    }
+  },
+
+  "paleta_por_estrutura": {
+    "A_layering": {
+      "fundos": ["#e5ded3", "#c2b6a5"],
+      "tipo": "#4c3529",
+      "acento": "#9db4a1"
+    },
+    "B_fullbleed": {
+      "fundos": ["foto campanha terracota", "foto lifestyle exterior"],
+      "tipo": "#e5ded3",
+      "sub": "rgba(229,222,211,0.70)"
+    },
+    "C_bloco": {
+      "fundos": ["foto campanha", "#273d29", "#4c3529"],
+      "tipo": "#e5ded3",
+      "sub": "rgba(229,222,211,0.65)"
+    }
+  },
+
+  "regra_geracao": {
+    "note": "A cada solicitação de capa, gerar 3 variações — uma de cada estrutura (A, B, C) — adaptando cor conforme o produto e contexto. Usuário escolhe a preferida.",
+    "headline_padrao": "nome da peça ou palavra-conceito da coleção",
+    "tipografia_imutavel": "Halant Bold para headline. Nunito Sans para labels e header. Nunca alterar.",
+    "header_imutavel": "CAROL STAGGEMEIER | MODA AUTORAL — sempre presente, só cor muda"
+  },
+
+  "negative_rules": [
+    "sem travessao (—) em qualquer texto",
+    "sem fundo branco puro (#FFFFFF) ou preto puro (#000000)",
+    "sem fonte abaixo de 18px",
+    "maximo 3 tamanhos de fonte por card",
+    "header CAROL STAGGEMEIER / MODA AUTORAL sempre presente",
+    "sem linhas divisorias entre secoes internas",
+    "imagem com border_radius apenas nos slides internos — capas podem ser full-bleed"
+  ]
+}

@@ -57,3 +57,17 @@ Use kebab-case para o tema. Ex: `halvng-bitcoin`, `campanha-maio`, `produto-x`.
 - Nunca entregue sem confirmar a voz contra `.agents/social-media-context-sms.md`
 - Nunca use o mesmo dado âncora duas vezes na mesma semana (`references/dados-ancora.md`)
 - Se algum arquivo estiver ausente ou com placeholders não preenchidos, informe antes de produzir
+
+---
+
+## REGRA DE JSON — Imagens de Referência
+
+**Toda vez que o usuário enviar uma imagem de referência para gerar um JSON de prompt:**
+
+→ Perguntar: *"Uso a skill `json-prompt-generator` para estruturar o JSON completo (scene / style / technical / materials / composition / quality)?"*
+
+→ Se confirmado: usar o schema da skill localizada em `../../skills/design/json-prompt-generator/SKILL.md`
+
+→ **Nunca usar o schema simplificado** `{ "prompt", "negative_prompt", "aspect_ratio" }` quando há referência visual presente.
+
+Esta regra herda do `CLAUDE.md` raiz do Master Social Design System e é obrigatória neste cliente.
