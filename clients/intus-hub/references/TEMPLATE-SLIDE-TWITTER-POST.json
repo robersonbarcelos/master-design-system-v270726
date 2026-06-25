@@ -9,10 +9,11 @@
     "format_preset": "Instagram Feed Portrait",
     "width_px": 1080,
     "height_px": 1350,
-    "orientation": "portrait",
+    "orientation": "portrait — SLIDE SEMPRE 4:5 PORTRAIT. NUNCA ALTERAR.",
     "platform": "Instagram Feed",
     "dpi": 72,
-    "color_mode": "RGB"
+    "color_mode": "RGB",
+    "lock": "⚠️ DIMENSÃO TRAVADA — 1080×1350px 4:5 portrait. Este é o formato do SLIDE COMPLETO. Não confundir com o formato da imagem interna (que é 16:9 landscape)."
   },
   "zones": {
     "header": {
@@ -79,13 +80,27 @@
     },
     "image": {
       "position": "below content",
-      "height": "380px",
       "margin_lateral": "44px",
       "margin_bottom": "44px",
       "border_radius": "18px",
-      "note": "Imagem gerada por IA ou foto real. Nunca full bleed — sempre com recuos laterais e border radius. Carregar via ChatGPT Image ou anexar referência ao gerador.",
+      "slot_within_slide": {
+        "width_px": 992,
+        "height_px": 558,
+        "aspect_ratio": "16:9",
+        "note": "SLOT TRAVADO — 992px × 558px = ratio exato 16:9. Nunca usar slot quadrado (992×992) nem retrato. O slide completo é 4:5 portrait (1080×1350), mas a imagem interna é SEMPRE landscape 16:9. Qualquer imagem fora desse ratio vai distorcer ou cortar errado no Canva."
+      },
+      "note": "Imagem nunca full bleed — sempre com recuos laterais de 44px e border radius 18px. O slot é 992×558px (16:9). Imagem quadrada ou retrato está ERRADA.",
       "overlay": {
         "type": "none"
+      },
+      "image_generation": {
+        "format": {
+          "dimensions": "1920x1080px",
+          "aspect_ratio": "16:9",
+          "orientation": "landscape — OBRIGATÓRIO",
+          "slot_in_canva": "992×558px",
+          "note": "GERAR SEMPRE em 1920×1080px landscape. NUNCA em 1080×1080 (quadrado), NUNCA em 1080×1350 (retrato). O slide inteiro é portrait, mas a IMAGEM INTERNA é sempre landscape 16:9. Ao importar no Canva, encaixar no slot de 992×558px com border-radius 18px."
+        }
       }
     },
     "footer": {
@@ -95,23 +110,35 @@
   },
   "text_rules": {
     "max_font_sizes": 2,
-    "sizes_in_use": ["34px corpo", "26px header nome"],
+    "sizes_in_use": ["34px corpo — FIXO, nunca aumentar", "26px header nome — FIXO"],
+    "body_font_size_locked": "34px — NUNCA usar 38px, 40px, 44px ou qualquer outro valor. 34px é o único tamanho permitido para o corpo do texto, independente da quantidade de conteúdo no slide.",
+    "header_font_size_locked": "26px semibold para nome, 22px regular para @handle — imutáveis",
+    "avatar_size_locked": "64px circle — imutável",
     "bold_is_the_only_marking": true,
     "no_color_accent_in_copy": true,
+    "color_rule": "ZERO cor no corpo do texto. Nem laranja, nem dourado, nem azul. Cor só existe na imagem. O único recurso de destaque permitido no copy é o negrito (bold). Qualquer slide com texto colorido está ERRADO.",
+    "approved_reference_slides": [
+      "68% dos novos protocolos DeFi lançados em 2026 — 34px, bold pontual, zero cor",
+      "Uma corretora organizou uma competição ao vivo — 34px, bold pontual, zero cor"
+    ],
     "line_breaks_are_intentional": true,
     "note": "Quebras de linha fazem parte do ritmo — respeitar exatamente como estão escritas. Não juntar parágrafos."
   },
   "differences_from_main_templates": {
-    "vs_clara": "Sem headline ultra bold condensada de 96px. Sem marcação laranja #E8722A no copy. Sem pre-headline. Texto é editorial corrido em 34px. Header imita UI do Twitter.",
-    "vs_escura": "Fundo sempre branco — não tem versão escura deste template. O contraste é obtido via negrito no texto."
+    "vs_clara": "Sem headline ultra bold condensada de 96px. Sem marcação laranja #E8722A no copy. Sem pre-headline. Texto é editorial corrido em 34px FIXO. Header imita UI do Twitter.",
+    "vs_escura": "Fundo sempre branco — não tem versão escura deste template. O contraste é obtido via negrito no texto, nunca via cor."
   },
   "negative_rules": [
-    "sem headline ultra bold condensada",
-    "sem laranja de destaque #E8722A no copy",
-    "sem footer com @handle — já está no header",
-    "sem travessão",
-    "sem linhas divisórias entre seções",
-    "imagem nunca sem border radius",
+    "NUNCA alterar o tamanho da fonte do corpo — 34px é fixo e inegociável",
+    "NUNCA usar laranja, dourado ou qualquer cor no corpo do texto",
+    "NUNCA usar headline ultra bold condensada",
+    "NUNCA adicionar footer com @handle — já está no header",
+    "NUNCA usar travessão (—)",
+    "NUNCA usar linhas divisórias entre seções",
+    "NUNCA gerar imagem quadrada (1080×1080) — slot é 16:9 landscape obrigatório",
+    "NUNCA gerar imagem retrato (1080×1350) — o slide é retrato, a imagem interna é landscape",
+    "slot de imagem travado em 992×558px — qualquer outro tamanho distorce",
+    "imagem nunca sem border radius 18px",
     "imagem nunca full bleed",
     "avatar sempre vazio para adicionar no Canva",
     "não juntar quebras de linha intencionais do copy"

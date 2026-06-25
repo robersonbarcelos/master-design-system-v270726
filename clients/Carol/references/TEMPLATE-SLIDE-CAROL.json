@@ -268,5 +268,63 @@
     "imagem sempre com border_radius 18px — nunca full-bleed nos slides internos",
     "header sempre livre para o Canva",
     "sem linhas divisorias entre secoes"
-  ]
+  ],
+
+  "variacoes_aceitas_producao": {
+    "nota": "Estruturas testadas em producao e aprovadas visualmente. Usar como referencia de layout para novos slides internos.",
+
+    "V1_split_texto_esquerda_foto_direita": {
+      "nome": "Split Vertical — Texto esquerda / Foto direita",
+      "slide_referencia": "slide-2-veludo-patriciapoeta-ideia1",
+      "data_aprovacao": "2026-06-21",
+      "descricao": "Divisao vertical do frame. Coluna esquerda 45% fundo linho #e5ded3 com bloco de texto completo (headline Halant Bold Italic + corpo Nunito Sans). Coluna direita 55% com foto da modelo, object-fit cover, sem border-radius. Separador vertical 2px #9db4a1 entre colunas. Header spanning full width no topo.",
+      "proporcoes": "45% texto esquerda / 55% foto direita",
+      "separador": "#9db4a1, 2px vertical",
+      "fundo_texto": "#e5ded3",
+      "headline_font": "Halant Bold Italic, 52px, #4c3529",
+      "corpo_font": "Nunito Sans Regular, 20px, #786c5c",
+      "foto": "coluna direita full height, sem border-radius, object-fit cover",
+      "quando_usar": "quando foto da referencia e vertical/retrato e o texto e longo"
+    },
+
+    "V2_texto_topo_foto_base": {
+      "nome": "Editorial Split Horizontal — Texto topo largura total + Foto base largura total",
+      "slide_referencia": "slide-2-veludo-patriciapoeta-ideia4-v2",
+      "data_aprovacao": "2026-06-21",
+      "descricao": "Divisao horizontal. Zona superior (~38-42% do frame): bloco de texto full-width com margens 44px laterais, fundo linho #e5ded3. Linha divisora horizontal 1px #9db4a1 com margens 44px. Zona inferior (~50-55% do frame): foto unica full-width com border-radius 18px, margens 44px laterais e 44px na base — NUNCA encostar na borda inferior. Handle @carolstaggemeier abaixo da foto com 44px de margem.",
+      "zona_texto_altura": "38-42% do frame",
+      "zona_foto_altura": "50-55% do frame",
+      "separador": "#9db4a1, 1px horizontal, margens 44px",
+      "fundo": "#e5ded3",
+      "foto_border_radius": "18px",
+      "margem_base_obrigatoria": "44px — foto nunca encosta na borda inferior",
+      "headline_font": "Halant Bold Italic, 52px, #4c3529",
+      "subtitulo_font": "Halant Regular Italic, 28px, #4c3529",
+      "corpo_font": "Nunito Sans Regular, 20px, #786c5c",
+      "quando_usar": "estrutura padrao aprovada para slides internos com foto real de produto ou pessoa"
+    },
+
+    "V3_split_texto_direita_foto_esquerda": {
+      "nome": "Split Vertical — Foto esquerda / Texto direita (invertido)",
+      "slide_referencia": "slide-3-veludo-pq-ideiaB",
+      "data_aprovacao": "2026-06-21",
+      "descricao": "Espelho do V1. Foto da modelo na coluna esquerda (55%), crop busto/portrait, object-fit cover, sem border-radius. Texto na coluna direita (45%) com fundo linho #e5ded3, padding 32px 24px 44px 44px. Separador vertical 2px #9db4a1. Header full-width no topo. Footer @carolstaggemeier na base da coluna de texto com 44px de margem inferior.",
+      "proporcoes": "55% foto esquerda / 45% texto direita",
+      "separador": "#9db4a1, 2px vertical",
+      "fundo_texto": "#e5ded3",
+      "foto": "coluna esquerda full height, sem border-radius, object-fit cover",
+      "padding_coluna_texto": "32px lateral interna, 44px base — nao encostar na borda inferior",
+      "headline_font": "Halant Bold Italic, 48-52px, #4c3529",
+      "subtitulo_font": "Halant Regular Italic, 24-28px, #4c3529",
+      "corpo_font": "Nunito Sans Regular, 20px, #786c5c",
+      "quando_usar": "variacao do V1 para dar ritmo ao carousel — alterna lado da foto entre slides"
+    },
+
+    "regras_comuns_todos_os_slides": {
+      "header_obrigatorio": "CAROL STAGGEMEIER (Nunito Sans Bold, 18px, all caps, letter-spacing 3px) esquerda + MODA AUTORAL (Nunito Sans Regular, 18px, all caps, letter-spacing 3px) direita — SEMPRE presente, cor adaptada ao fundo",
+      "bold_corpo": "OBRIGATORIO — sempre 2 a 3 palavras-chave em Nunito Sans Bold 700 no corpo — mesma cor e tamanho, so o peso muda",
+      "footer_handle": "@carolstaggemeier, Nunito Sans Regular, 20px — sempre com margem minima de 44px da borda inferior",
+      "margem_base": "44px OBRIGATORIO em qualquer elemento proximo a borda inferior — texto, foto ou caixinha nunca encostam na borda"
+    }
+  }
 }

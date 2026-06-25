@@ -216,6 +216,15 @@ Se não: execute em sequência:
 
 **Carrossel:**
 
+**Etapa 0 — Análise de Referência (quando usuário traz conteúdo externo)**
+
+Se o usuário trouxer conteúdo de outro criador/marca como referência:
+- `reference-analyzer-sms` → executa MODE A (análise pura) ou MODE C (adaptação para o cliente)
+- MODE A: extrai gancho, tensão, plot, virada, CTA e diagnóstico psicológico
+- MODE C: propõe 3 storytellings resumidos → aguarda aprovação → 5 ganchos → aguarda aprovação → copy final → CTA + legenda
+- **GATE**: produto/cliente do usuário entra APENAS na virada — nunca antes
+- O fluxo das Etapas 1-5 abaixo é executado DENTRO do MODE C da skill, não separadamente
+
 **Etapa 1 — Pré-produção: 3 Ângulos (obrigatório antes de qualquer slide)**
 
 Gere 3 ângulos distintos para o tema. Cada ângulo entrega:
@@ -497,6 +506,7 @@ Configuração de dials para interfaces de produto:
 
 | Skill | Contexto | Fase | Trigger de ativação |
 |---|---|---|---|
+| `reference-analyzer-sms` | 2 | Pré-produção (Etapa 0) | usuário traz conteúdo externo: "adaptar", "referência", "vi esse post", "quero replicar", "baseado nesse conteúdo", "esse carrossel funcionou", "mesmo gancho", "mesmo estilo", "inspirado em" |
 | `huashu-design` (Core Asset Protocol) | 1, 2, 4, 5 | Foundation | brand-spec.md ausente ou incompleto |
 | `huashu-design` (Design Direction Advisor) | 1, 4, 5 | Foundation | cliente sem identidade visual definida |
 | `huashu-design` (5D Critique) | 1, 4 | Validação | toda LP antes de publicar |

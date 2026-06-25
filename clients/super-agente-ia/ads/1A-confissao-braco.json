@@ -1,0 +1,203 @@
+{
+  "id": "1-A",
+  "nome": "Passei anos fazendo tudo no braço",
+  "mecanismo": "confissao-poll",
+  "variacao_cor": "canonica",
+
+  "format": {
+    "tipo": "meta-ads-static",
+    "aspect_ratio": "1:1",
+    "resolution": "1080x1080px",
+    "background_color": "#0a0a0a"
+  },
+
+  "paleta": {
+    "bg": "#0a0a0a",
+    "accent": "#E84000",
+    "accent_dark": "#8C2000",
+    "text_primary": "#FFFFFF",
+    "text_muted": "rgba(255,255,255,0.4)",
+    "text_secondary": "rgba(255,255,255,0.65)",
+    "poll_bar": "#E84000",
+    "poll_bar_loser": "rgba(255,255,255,0.12)",
+    "price_strike_color": "#FF3B30",
+    "card_surface": "rgba(255,255,255,0.05)"
+  },
+
+  "tipografia": {
+    "headline": "Inter Tight Black 900",
+    "poll_label": "Inter Medium 500",
+    "poll_percent_winner": "Inter Tight Bold 700",
+    "poll_percent_loser": "Inter Regular 400",
+    "body": "Inter Regular 400",
+    "price_strike": "Inter Regular 400",
+    "price_final": "Inter Tight Black 900",
+    "handle": "Inter Regular 400"
+  },
+
+  "layout": {
+    "estrutura": "split-vertical",
+    "nota": "Lado esquerdo = copy + poll. Lado direito = foto do Diego. Divisao 50/50.",
+    "padding_externo": "48px"
+  },
+
+  "zonas": {
+
+    "foto": {
+      "posicao": "direita",
+      "x": "540px",
+      "y": "0px",
+      "width": "540px",
+      "height": "1080px",
+      "tipo": "foto-diego-anexo",
+      "instrucao": "Carregar foto do Diego em anexo. Expressao: séria, sem sorriso, olhando direto para a câmera. Enquadramento: close 3/4 ou meia figura. Posicionar de forma que o rosto fique na metade superior-direita do frame. Aplicar fade/vinheta na borda esquerda da foto para fundir com o fundo #0a0a0a sem corte duro.",
+      "blend": "fade-left para #0a0a0a — gradiente de transparencia de x=640px para x=540px"
+    },
+
+    "headline": {
+      "posicao": "esquerda, topo",
+      "x": "48px",
+      "y": "80px",
+      "width": "460px",
+      "blocks": [
+        {
+          "id": "linha-1",
+          "content": "Passei anos",
+          "font": "Inter Tight Black 900",
+          "size": "52px",
+          "color": "#FFFFFF",
+          "line_height": "1.05"
+        },
+        {
+          "id": "linha-2",
+          "content": "fazendo tudo",
+          "font": "Inter Tight Black 900",
+          "size": "52px",
+          "color": "#FFFFFF",
+          "line_height": "1.05"
+        },
+        {
+          "id": "linha-3-accent",
+          "content": "no braço.",
+          "font": "Inter Tight Black 900",
+          "size": "52px",
+          "color": "#E84000",
+          "line_height": "1.05",
+          "margin_bottom": "32px"
+        }
+      ]
+    },
+
+    "poll": {
+      "posicao": "esquerda, meio",
+      "x": "48px",
+      "y": "310px",
+      "width": "460px",
+      "card": {
+        "background": "rgba(255,255,255,0.05)",
+        "border": "1px solid rgba(255,255,255,0.10)",
+        "border_radius": "14px",
+        "padding": "20px"
+      },
+      "label_topo": {
+        "content": "O que você faria no meu lugar?",
+        "font": "Inter Medium 500",
+        "size": "14px",
+        "color": "rgba(255,255,255,0.65)",
+        "margin_bottom": "16px"
+      },
+      "opcao_perdedora": {
+        "label": "Continuaria no manual",
+        "percent": "9%",
+        "bar_color": "rgba(255,255,255,0.12)",
+        "bar_fill": "9%",
+        "label_color": "rgba(255,255,255,0.50)",
+        "percent_color": "rgba(255,255,255,0.40)",
+        "margin_bottom": "10px"
+      },
+      "opcao_vencedora": {
+        "label": "Montaria meu Super Agente",
+        "percent": "91%",
+        "bar_color": "#E84000",
+        "bar_fill": "91%",
+        "label_color": "#FFFFFF",
+        "percent_color": "#E84000",
+        "font_percent": "Inter Tight Bold 700",
+        "nota": "Barra de progresso laranja preenchida. Item vencedor em destaque total."
+      }
+    },
+
+    "body": {
+      "posicao": "esquerda, abaixo do poll",
+      "x": "48px",
+      "y": "530px",
+      "width": "460px",
+      "blocks": [
+        {
+          "id": "decisao",
+          "content": "Eu escolhi montar.",
+          "font": "Inter Regular 400",
+          "size": "18px",
+          "color": "rgba(255,255,255,0.65)",
+          "margin_bottom": "4px"
+        },
+        {
+          "id": "cta-suave",
+          "content": "Hoje você pode fazer o mesmo.",
+          "font": "Inter Regular 400",
+          "size": "18px",
+          "color": "rgba(255,255,255,0.65)"
+        }
+      ]
+    },
+
+    "preco": {
+      "posicao": "esquerda, rodape",
+      "x": "48px",
+      "y": "900px",
+      "width": "460px",
+      "linha_superior": {
+        "content": "R$997",
+        "font": "Inter Regular 400",
+        "size": "22px",
+        "color": "rgba(255,255,255,0.40)",
+        "decoration": "line-through",
+        "strike_color": "#FF3B30"
+      },
+      "linha_preco_final": {
+        "content": "R$87,90",
+        "font": "Inter Tight Black 900",
+        "size": "48px",
+        "color": "#FFFFFF",
+        "nota": "Numero grande — ancora visual do rodape"
+      },
+      "linha_complemento": {
+        "content": "ou 6x R$16,50 · garantia 7 dias",
+        "font": "Inter Regular 400",
+        "size": "14px",
+        "color": "rgba(255,255,255,0.40)"
+      }
+    },
+
+    "handle": {
+      "posicao": "canto inferior direito",
+      "x": "940px",
+      "y": "1048px",
+      "content": "@intushub",
+      "font": "Inter Regular 400",
+      "size": "14px",
+      "color": "rgba(255,255,255,0.30)"
+    }
+  },
+
+  "checklist_producao": [
+    "Foto do Diego carregada em anexo — nao descrever personagem",
+    "Fade da foto para o fundo #0a0a0a na borda esquerda",
+    "Poll UI como card com border-radius 14px",
+    "Barra laranja #E84000 na opcao vencedora (91%)",
+    "R$997 riscado com linha vermelha #FF3B30",
+    "Handle @intushub no canto inferior direito",
+    "Sem watermark de IA na imagem de fundo",
+    "Paleta laranja + preto — sem azul"
+  ]
+}
