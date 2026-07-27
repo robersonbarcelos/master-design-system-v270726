@@ -1,7 +1,8 @@
 # PRD — Master Social Design System
 
-**Versão:** 1.1.0
-**Data:** 2026-05-21
+**Versão:** 1.2.0
+**Data:** 2026-07-27
+**Repositório:** https://github.com/robersonbarcelos/master-design-system-v270726
 **Tipo:** Sistema de orquestração de skills para produção de design e conteúdo no Claude Code
 
 ---
@@ -851,7 +852,9 @@ A metodologia do mestre-squad-builder (o que NÃO faz por agente, handoffs forma
 - [x] workflow 01-landing-page.md atualizado
 - [x] workflow 05-interface-design.md criado
 
-### v1.2
+### v1.2 ✅ Concluído (2026-07-27)
+- [x] Todas as pastas de cliente (incluindo `runs/`) versionadas neste repositório, sem exclusão via `.gitignore`
+- [x] Repositório republicado em `master-design-system-v270726`
 - [ ] Integração com BlackTwist MCP para publicação direta nas plataformas
 - [ ] Template de proposta comercial para clientes
 - [ ] Skill de briefing estruturado para novos projetos

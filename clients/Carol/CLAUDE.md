@@ -65,5 +65,5 @@ Use a data de hoje como nome da pasta. Se a pasta não existir, crie-a.
 - Nunca escreva copy sem executar o Gatilho Pré-Copy do `production-rules.md`
 - Nunca entregue sem confirmar a voz contra `.agents/social-media-context-sms.md`
 - Nunca use o mesmo dado âncora duas vezes na mesma semana (`references/dados-ancora.md`)
-- Vocabulário PROIBIDO: "premium", "luxo", "trends", "must-have", "fashionista", "lacrou", "empoderamento", "alfaiataria"
+- Vocabulário PROIBIDO: "premium", "luxo", "trends", "must-have", "fashionista", "lacrou", "empoderamento"
 - Se algum arquivo estiver ausente ou com placeholders não preenchidos, informe antes de produzir

@@ -29,6 +29,61 @@
 
 ---
 
+## REGRA CANÔNICA — Widget HTML vs JSON completo
+
+**Widget HTML é APENAS para:**
+- Teste de seleção de fontes (font-test-sheet, especificações de fonte lado a lado)
+- Teste de variação em sites e landing pages
+
+**Para capa/imagem DEFINITIVA (carrossel, post, thumbnail, qualquer peça final de imagem), NUNCA montar widget HTML.**
+Sempre gerar o **JSON completo por variação**, usando o template base de zonas definido para o cliente (`header`/`image`/`content`/`footer`), com:
+- Título/nome da variação especificando a combinação de fonte usada
+- `zones.image.asset_prompt` com a análise de imagem via `json-prompt-generator` (quando houver referência) integrada dentro do próprio schema de zonas — nunca como JSON solto separado
+- `negative_rules` reforçando as regras fixas do cliente (ex: sem travessão, sem avatar, posição da headline, overlay correto por variação, etc.)
+
+Essa regra vale para todos os clientes deste sistema, não só para peças de teste de fonte.
+
+### Sempre colar os JSONs completos no chat
+
+Além de salvar em `runs/[data]/`, sempre colar o conteúdo completo de cada JSON gerado diretamente na resposta do chat — nunca apenas referenciar o caminho do arquivo.
+
+---
+
+## REGRA CRÍTICA — Gate de Skill de Criação (obrigatório para todos os clientes e todos os formatos)
+
+**Sempre que o pedido envolver produzir qualquer peça de copy — carrossel, artigo/long-form, post, thread, legenda, hook ou roteiro de vídeo — em qualquer cliente, é OBRIGATÓRIO acionar a skill de criação correspondente (`carousel-writer-sms`, `article-writer-sms`, `post-writer-sms`, `thread-writer-sms`, `caption-writer-sms`, `hook-writer-sms`, `video-script-sms`) — nunca escrever ângulos, slides, parágrafos, hooks ou falas manualmente "por fora" dela.**
+
+### Tabela de mapeamento formato → skill obrigatória
+
+| Formato pedido | Skill obrigatória |
+|---|---|
+| Carrossel (qualquer plataforma) | `carousel-writer-sms` |
+| Artigo / long-form / X Article / newsletter | `article-writer-sms` |
+| Post único / post longo | `post-writer-sms` |
+| Thread multi-post | `thread-writer-sms` |
+| Legenda visual (caption) | `caption-writer-sms` |
+| Hook / linha de abertura | `hook-writer-sms` |
+| Roteiro de vídeo / script / reel | `video-script-sms` |
+| Repurpose de conteúdo existente | `content-repurposer-sms` |
+
+### Por que essa regra existe
+Em 2026-07-21, um carrossel do Intus Hub foi produzido escrevendo ângulos manualmente (arquivo `angulos-[tema].md`) sem passar pela skill. Isso pulou a ETAPA 0 (oferta do `narrative-framework-sms` — os 5 frameworks: Value-Stack, Problem-Proof, Hack List, Rant Callout, Demo Walkthrough), a FASE 0.5 (pesquisa de contexto estruturada) e todos os demais gates da skill. A convenção de nomenclatura de artefatos (`angulos-[tema].md`, `carrossel-[tema].md` etc, definida no `CLAUDE.md` de cada cliente) descreve **onde salvar o resultado**, não substitui o processo da skill. O mesmo risco existe para qualquer outro formato de copy — não é exclusivo de carrossel — por isso a regra foi generalizada.
+
+### O que fazer sempre que o pedido for de copy em qualquer formato
+1. Acionar a skill de criação correspondente (ferramenta Skill) — não produzir texto livre "por fora"
+2. A skill decide sozinha, em seu próprio gate inicial, se oferece o `narrative-framework-sms` antes da fase de execução
+3. Seguir todos os gates da skill em sequência, sem pular etapa
+4. Toda skill de criação deve executar o `copy-qa-sms` (Voice Gate + AI Pattern Gate + padrões estruturais) antes de entregar o copy final — se a skill acionada não tiver esse gate, é falha da skill, não uma etapa opcional
+5. Salvar os artefatos finais em `clients/[cliente]/runs/[data]/` seguindo a convenção de nomes do `CLAUDE.md` daquele cliente — isso continua valendo, é só o *empacotamento final*, não substitui o processo
+
+### Onde essa regra vale
+Este arquivo (`CLAUDE.md` raiz) é lido automaticamente ao abrir qualquer pasta do sistema — a regra acima já se aplica a **todos os clientes** (Intus Hub, Carol, Aurum Lingerie, Mercurius, Michele Fara, Motofácil, NovaDAX, White Label, etc.) e a **todos os formatos de copy**, sem precisar duplicar em cada `CLAUDE.md` individual. Não é necessário (nem recomendado) recriar esta regra nos arquivos de cliente — isso criaria risco de divergência se as skills forem atualizadas.
+
+### Exceção
+- Se o usuário disser explicitamente "não quer passar pela skill, quer só um rascunho rápido" → pode prosseguir em modo manual, mas sinalizar: `[⚠️ COPY SEM GATE DA SKILL — não passou por narrative-framework-sms nem pelos QA Gates de copy-qa-sms]`
+
+---
+
 ## Estrutura do Projeto
 
 ```
