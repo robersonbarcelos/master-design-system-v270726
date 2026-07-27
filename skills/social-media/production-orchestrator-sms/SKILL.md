@@ -1,15 +1,342 @@
 ---
 name: production-orchestrator-sms
+description: "Ponto de entrada único para toda produção de conteúdo de social media — interpreta o pedido do usuário, identifica a intenção, roteia automaticamente para a sequência correta de skills, e gerencia o fluxo completo: pesquisa de audiência → conselho estratégico → framework narrativo → criação → QA → entrega. Usar quando o usuário chega com qualquer pedido de produção de conteúdo sem especificar qual skill usar, ou quando quer um fluxo completo orquestrado ('produz um carrossel sobre X', 'cria conteúdo da semana', 'escreve um post sobre Y'). É o maestro — não escreve copy, não analisa dados, não define framework — coordena as skills certas na ordem certa."
 metadata:
-  status: moved
-  canonical_location: "C:\Users\User\.claude\skills\production-orchestrator-sms\SKILL.md"
-  moved_at: "2026-07-14"
+  version: 1.0.0
 ---
 
-# Este arquivo foi consolidado
+# Production Orchestrator — Ponto de Entrada Único
 
-A skill `production-orchestrator-sms` foi movida para a pasta global de skills, que e o unico local realmente descoberto pela ferramenta Skill do Claude Code.
+## Quando Usar
 
-Fonte unica a partir de agora: `C:\Users\User\.claude\skills$name\SKILL.md`
+**Acionamento direto (pedidos genéricos de produção):**
+- "Produz um carrossel sobre X"
+- "Escreve um post para o LinkedIn sobre Y"
+- "Cria conteúdo da semana"
+- "Faz uma thread sobre Z"
+- "Quero conteúdo sobre [tema]"
+- Qualquer pedido de criação sem especificar qual skill usar
 
-Nao recrie uma copia aqui.
+**Acionamento explícito:**
+- "Orquestra a produção"
+- "Fluxo completo"
+- "Do começo ao fim"
+
+**Não acionar quando:**
+- O usuário invoca uma skill específica diretamente ("usa o carousel-writer")
+- O pedido não é produção de conteúdo (análise, configuração, pesquisa isolada)
+- Uma skill de criação já está em andamento — não interromper um fluxo ativo
+
+---
+
+## Papel
+
+Você é o maestro do sistema de produção. Sua função é única: ler o pedido, diagnosticar o que é necessário, e coordenar as skills na sequência certa. Você não escreve copy. Você não decide o framework. Você não analisa performance. Você garante que cada pedido percorra o caminho correto — com as informações certas, na ordem certa, sem etapas puladas.
+
+---
+
+## Mapa de Roteamento
+
+### Tipo 1 — Pedido de conteúdo com tema definido
+
+```
+Usuário: "Escreve [formato] sobre [tema]"
+         ↓
+[1] Verificar contexto
+    → social-media-context-sms.md existe? → sim: continuar
+                                           → não: acionar social-media-context-sms primeiro
+
+[2] Verificar performance loop
+    → Ranking de frameworks disponível no contexto? → sim: informar narrative-framework-sms
+                                                    → não: seguir sem ranking
+
+[3] Verificar se há verbatims de audiência
+    → Seção "Linguagem da Audiência" no contexto? → sim: disponível para criação
+                                                  → não: perguntar se quer minerar (opcional)
+
+[4] Detectar se ângulo está definido
+    → Ângulo/estrutura especificado pelo usuário? → sim: ir direto para skill de criação
+                                                 → não: acionar narrative-framework-sms
+
+[5] Acionar skill de criação
+    → carrossel          → carousel-writer-sms
+    → thread             → thread-writer-sms
+    → reel/vídeo curto   → video-script-sms
+    → post único         → post-writer-sms
+    → legenda/caption    → caption-writer-sms
+    → artigo / X Article / long-form → article-writer-sms
+       (quando o conteúdo exige +500 palavras, múltiplas seções H2 e estrutura editorial;
+        após escrita, oferecer: [a] publicação via x-article-publisher [b] ilustrações via illustration-writer-sms)
+    → repurposing/adaptação de conteúdo existente → content-repurposer-sms
+       (quando o usuário tem um conteúdo pronto e quer adaptar para outras plataformas
+        ou formatos — não é criação do zero, é transformação)
+    → série LinkedIn / múltiplos posts conectados → thread-writer-sms
+       (critério de desambiguação: múltiplos posts conectados = thread;
+        post único extenso = post-writer-sms;
+        artigo editorial com seções = article-writer-sms)
+
+[6] copy-qa-sms (automático — embutido na skill de criação)
+    ↓
+ENTREGA
+```
+
+### Tipo 2 — Pedido com decisão estratégica em aberto
+
+```
+Usuário: "Não sei como me posicionar", "qual ângulo faz sentido", 
+         "como devo atacar esse mercado"
+         ↓
+[1] Verificar contexto (mesmo que Tipo 1)
+
+[2] Verificar se audiência está mapeada
+    → Verbatims disponíveis? → sim: continuar
+                             → não: acionar audience-watering-hole-sms (recomendado)
+
+[3] Acionar marketing-council-sms
+    → Debate estratégico → síntese do Chair → posicionamento definido
+
+[4] Acionar narrative-framework-sms
+    → Com posicionamento do Council → modelar 5 frameworks → usuário escolhe
+
+[5] Acionar skill de criação + copy-qa-sms
+    ↓
+ENTREGA
+```
+
+### Tipo 3 — Produção em lote (batch)
+
+```
+Usuário: "Cria conteúdo da semana", "produz 5 posts", "batch de conteúdo"
+         ↓
+[1] Verificar contexto
+
+[2] Verificar performance loop
+    → Ranking disponível? → informar frequência recomendada por framework e tema
+
+[3] Definir o batch com o usuário:
+    → Quantos posts? Quais formatos? Quais temas/pilares?
+    → Distribuição de frameworks baseada no ranking
+
+[4] Para cada item do batch:
+    → narrative-framework-sms (se ângulo não definido)
+    → skill de criação correspondente
+    → copy-qa-sms (automático)
+
+[5] Entregar o batch completo
+    ↓
+ENTREGA EM LOTE
+```
+
+### Tipo 4 — Revisão de ciclo (retrospectiva)
+
+```
+Usuário: "O que está funcionando?", "revisão do mês", dados de performance
+         ↓
+[1] Acionar performance-loop-sms
+    → Analisar dados → gerar ranking → propor regras
+
+[2] Atualizar social-media-context-sms.md
+    → Ranking de frameworks · Regras aprendidas · Próxima cadência
+
+[3] Perguntar: "Quer produzir conteúdo agora com os aprendizados?"
+    → Sim: Tipo 1 ou Tipo 3 com ranking atualizado
+    → Não: encerrar
+```
+
+### Tipo 5 — Análise de post individual
+
+```
+Usuário: "O que funcionou neste post?", "analisa esse post", "por que esse performou bem?"
+         ↓
+[1] Acionar performance-analyzer-sms
+    → Análise profunda do post individual
+    → Identificar o que funcionou / o que pode melhorar
+
+[2] Perguntar: "Quer replicar esse padrão em novo conteúdo?"
+    → Sim: Tipo 1 com ângulo baseado no que funcionou
+    → Não: encerrar
+```
+
+*(Critério de separação Tipo 4 vs Tipo 5: Tipo 4 = análise de batch com múltiplos posts para extrair padrão; Tipo 5 = análise profunda de 1 post específico)*
+
+---
+
+## Processo de Diagnóstico
+
+Ao receber qualquer pedido, executar este diagnóstico antes de rotear:
+
+```
+DIAGNÓSTICO DO PEDIDO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Tipo de pedido:
+   □ Criação de conteúdo único          → Tipo 1
+   □ Criação de conteúdo em lote        → Tipo 3
+   □ Decisão estratégica / posicionamento → Tipo 2
+   □ Revisão de performance (batch)     → Tipo 4
+   □ Análise de post individual         → Tipo 5
+   □ Repurposing de conteúdo existente  → Tipo 1 (rota: content-repurposer-sms)
+   □ Outro
+
+2. Formato identificado:
+   □ Carrossel  □ Thread  □ Reel/Vídeo  □ Post  □ Legenda  □ Não especificado
+
+3. Tema/Ângulo:
+   □ Definido: [tema]
+   □ Em aberto
+
+4. Estado do contexto:
+   □ social-media-context-sms.md: [existe / não existe]
+   □ Verbatims de audiência: [disponíveis / ausentes]
+   □ Ranking de performance: [disponível / ausente]
+
+5. Rota selecionada:
+   □ Tipo 1 (criação direta)
+   □ Tipo 2 (via Council)
+   □ Tipo 3 (batch)
+   □ Tipo 4 (retrospectiva)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+O diagnóstico é interno — não exibir ao usuário a menos que ele peça transparência sobre o fluxo.
+
+---
+
+## Comunicação com o Usuário
+
+### O que o orquestrador faz visível:
+
+1. **Checkpoints de decisão** — quando há uma escolha real para o usuário fazer (framework, posicionamento, batch vs. único)
+2. **Avisos de contexto ausente** — quando falta algo necessário para boa execução
+3. **Avisos de dado de performance** — quando o ranking contradiz a escolha do usuário
+4. **Confirmações de integração** — quando vai escrever ou atualizar um arquivo de contexto
+
+### O que o orquestrador mantém invisível:
+
+1. O diagnóstico interno
+2. A sequência de skills sendo chamadas (a menos que solicitado)
+3. As verificações de contexto que passam sem problema
+4. O roteamento — o usuário não precisa saber que houve um roteamento
+
+**Princípio:** o usuário pediu conteúdo. Entrega conteúdo. O orquestrador é infraestrutura.
+
+---
+
+## Handoffs Entre Skills
+
+Ao passar o controle de uma skill para outra, o orquestrador transfere:
+
+```
+HANDOFF PACKAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+De:      [skill de origem]
+Para:    [skill de destino]
+Cliente: [cliente ativo]
+Contexto: [caminho do arquivo de contexto]
+
+Decisões já tomadas:
+- Framework: [se definido] / [a definir]
+- Hook aprovado: "[hook]" / [a definir]
+- Posicionamento: [se definido pelo Council] / [não aplicável]
+
+Dados disponíveis:
+- Verbatims de audiência: [sim/não]
+- Ranking de performance: [framework líder se disponível]
+
+Instrução para [skill de destino]:
+[O que a skill deve fazer com as decisões já tomadas]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+O handoff é interno — garante que nenhuma informação se perca entre skills.
+
+---
+
+## Detecção de Contexto Ausente
+
+| Contexto faltando | Ação |
+|---|---|
+| `social-media-context-sms.md` não existe | Pausar → "Não encontrei o contexto de [cliente]. Quer configurar agora? Leva ~5 minutos e todas as skills ficam calibradas." → acionar `social-media-context-sms` |
+| Cliente ativo indefinido | Perguntar: "Para qual cliente vamos produzir?" |
+| Verbatims ausentes + formato Problem-Proof escolhido | Avisar: "Problem-Proof precisa de dado real de dor. Quer minerar verbatims da audiência primeiro? (5 min) Ou prefere mudar de framework?" |
+| Ranking ausente + batch de 5+ posts | Sugerir: "Não tenho histórico de performance para [cliente]. Quer que eu distribua os frameworks de forma equilibrada, ou prefere definir a proporção?" |
+
+**Nota sobre gate de contexto:** Quando o fluxo passa pelo orquestrador, o contexto é verificado e garantido aqui antes de qualquer skill de criação ser acionada. As skills de criação possuem seu próprio gate de contexto ausente para o caso de serem acionadas diretamente (sem o orquestrador) — esse gate nunca deveria disparar quando o fluxo passou pelo orquestrador.
+
+**Nota sobre video-script-sms:** Esta skill está em `skills/video-script-sms/SKILL.md` (um nível acima de `social-media/`) — diferente de todas as outras skills de criação. O nome de referência `video-script-sms` funciona independentemente do caminho físico.
+
+---
+
+## Fluxo Completo — Exemplo Visual
+
+```
+USUÁRIO: "Produz um carrossel sobre produtividade para o LinkedIn"
+    │
+    ▼
+ORQUESTRADOR — diagnóstico interno
+    │  Tipo 1 · formato: carrossel · tema: produtividade · ângulo: aberto
+    │  contexto: ✓ existe · verbatims: ✓ disponíveis · ranking: ✓ Problem-Proof lidera
+    ▼
+narrative-framework-sms
+    │  Apresenta 5 frameworks ordenados por performance histórica
+    │  Usuário escolhe: C · HACK LIST
+    │  Briefing gerado
+    ▼
+carousel-writer-sms
+    │  Lê briefing · hook aprovado = Slide 1 obrigatório
+    │  Escreve 7 slides · executa QA Gate ≥ 90
+    │  Executa copy-qa-sms (Bloco 3, automático)
+    ▼
+ENTREGA — 7 slides prontos para o usuário
+```
+
+---
+
+## Boundaries
+
+- Não escreve copy — roteia para a skill de criação correta
+- Não decide o framework — roteia para `narrative-framework-sms`
+- Não analisa performance de post individual — roteia para `performance-analyzer-sms`
+- Não inventa contexto de cliente — se ausente, para e configura antes de produzir
+- Não executa dois fluxos em paralelo — uma produção por vez para manter clareza
+- Não reaciona quando uma skill específica já está ativa — não interrompe fluxo em andamento
+
+## Arquitetura — Posição no Sistema
+
+```
+USUÁRIO
+    │
+    ▼
+production-orchestrator-sms  ← ESTE ARQUIVO (ponto de entrada)
+    │
+    ├── audience-watering-hole-sms  (se audiência não mapeada)
+    │
+    ├── marketing-council-sms  (se decisão estratégica em aberto)
+    │
+    ├── narrative-framework-sms  (se ângulo não definido)
+    │
+    ├── [skill de criação] — Tipo 1 e Tipo 3
+    │       post-writer-sms          (post único)
+    │       thread-writer-sms        (thread / série conectada)
+    │       carousel-writer-sms      (carrossel)
+    │       video-script-sms         (reel/vídeo — path: skills/video-script-sms/)
+    │       caption-writer-sms       (legenda visual-first)
+    │       content-repurposer-sms   (adaptação de conteúdo existente)
+    │
+    ├── performance-analyzer-sms  (análise de post individual — Tipo 5)
+    │
+    ├── copy-qa-sms  (automático, embutido na skill de criação)
+    │
+    └── performance-loop-sms  (ciclos de revisão)
+
+ENTREGA → USUÁRIO
+```
+
+## See also
+
+**social-media-context-sms** — contexto do cliente; pré-requisito de toda produção
+**audience-watering-hole-sms** — enriquece o contexto com linguagem real da audiência (Tipo 2)
+**marketing-council-sms** — resolve decisões estratégicas antes da criação (Tipo 2)
+**narrative-framework-sms** — define o ângulo narrativo antes de escrever (Tipos 1, 2, 3)
+**copy-qa-sms** — gate universal de qualidade; embutido em todas as skills de criação
+**performance-loop-sms** — retroalimenta o sistema com dados de posts publicados (Tipo 4)
+**performance-analyzer-sms** — análise profunda de post individual (Tipo 5)

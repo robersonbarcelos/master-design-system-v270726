@@ -96,6 +96,25 @@ Master-social-design-system/
 
 ---
 
+## REGRA CANÔNICA — Repositório é a fonte única de skills (proibido stub com caminho absoluto)
+
+**O repositório `master-design-system` é a fonte canônica de todo `SKILL.md`. A pasta global do usuário (`~/.claude/skills/` ou `C:\Users\<usuario>\.claude\skills\`) é apenas um destino de instalação local — nunca o inverso.**
+
+### O que NUNCA fazer
+- Nunca substituir o conteúdo real de um `SKILL.md` dentro de `skills/` por um stub "movido para" que aponte para um caminho absoluto de máquina (`C:\Users\User\...`, `C:\Users\Pichau\...`, `/home/usuario/...` etc.)
+- Nunca tratar a pasta global do Claude Code como "fonte única" de uma skill — ela é local a uma máquina e a um usuário do sistema operacional, e não é versionada nem portável
+
+### Por que essa regra existe
+Em 2026-07-14, uma consolidação anterior moveu o conteúdo de 22 skills para `C:\Users\User\.claude\skills\` e deixou, no lugar delas dentro do repositório, apenas um stub apontando para esse caminho absoluto. Isso funcionava nessa máquina, mas ao instalar o repositório em outro computador (`C:\Users\Pichau\`), o caminho não existia — a skill ficava vazia e inutilizável. Isso foi corrigido em 2026-07-27: o conteúdo real de todas as skills afetadas foi restaurado dentro de `skills/` a partir da pasta global desta máquina, e o repositório passou a ser a única fonte de verdade.
+
+### O que fazer sempre
+1. Editar o comportamento de uma skill **direto no arquivo dentro do repositório** (`skills/.../SKILL.md`)
+2. Se for necessário instalar/sincronizar localmente em `~/.claude/skills/`, isso é uma cópia de instalação — pode ser feita por script de setup, nunca por edição manual divergente
+3. Antes de qualquer commit, verificar se nenhum `SKILL.md` dentro de `skills/` foi substituído por um stub ou contém referência a caminho absoluto de máquina (`grep -r "C:\\\\Users\\\\" skills/` deve retornar vazio)
+4. Se encontrar um stub desses, restaurar o conteúdo real antes de prosseguir — nunca commitar/push um stub
+
+---
+
 ## Regras Gerais de Produção
 
 - Ao iniciar sessão em qualquer pasta de cliente, ler o CLAUDE.md daquele cliente primeiro
