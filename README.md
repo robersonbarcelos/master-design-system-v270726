@@ -540,7 +540,7 @@ git pull origin main
 
 ## Versão
 
-**v1.2.0** — 2026-07-27
+**v1.3.0** — 2026-07-27
 
 Veja o [PRD.md](PRD.md) para documentação técnica completa, decisões de arquitetura, roadmap e limitações conhecidas.
 
