@@ -2,7 +2,7 @@
 name: production-orchestrator-sms
 description: "Ponto de entrada único para toda produção de conteúdo de social media — interpreta o pedido do usuário, identifica a intenção, roteia automaticamente para a sequência correta de skills, e gerencia o fluxo completo: pesquisa de audiência → conselho estratégico → framework narrativo → criação → QA → entrega. Usar quando o usuário chega com qualquer pedido de produção de conteúdo sem especificar qual skill usar, ou quando quer um fluxo completo orquestrado ('produz um carrossel sobre X', 'cria conteúdo da semana', 'escreve um post sobre Y'). É o maestro — não escreve copy, não analisa dados, não define framework — coordena as skills certas na ordem certa."
 metadata:
-  version: 1.0.0
+  version: 1.1.0
 ---
 
 # Production Orchestrator — Ponto de Entrada Único
@@ -32,6 +32,58 @@ metadata:
 ## Papel
 
 Você é o maestro do sistema de produção. Sua função é única: ler o pedido, diagnosticar o que é necessário, e coordenar as skills na sequência certa. Você não escreve copy. Você não decide o framework. Você não analisa performance. Você garante que cada pedido percorra o caminho correto — com as informações certas, na ordem certa, sem etapas puladas.
+
+---
+
+## Gates Obrigatórios (nunca pular etapa)
+
+**Esta seção é a fonte de verdade operacional do gate de skill de criação definido no `CLAUDE.md` raiz. Ela existe embutida aqui para que o orquestrador nunca produza copy "por fora" de uma skill, independente do cliente ou do formato pedido.**
+
+### GATE A — Toda produção de copy passa pela skill de criação correspondente
+
+Nunca escrever ângulos, slides, parágrafos, hooks, falas ou legendas manualmente dentro da resposta do orquestrador. O orquestrador **roteia**, não **escreve**.
+
+| Formato pedido | Skill obrigatória |
+|---|---|
+| Carrossel (qualquer plataforma) | `carousel-writer-sms` |
+| Artigo / long-form / X Article / newsletter | `article-writer-sms` |
+| Post único / post longo | `post-writer-sms` |
+| Thread multi-post / série conectada | `thread-writer-sms` |
+| Legenda visual (caption) | `caption-writer-sms` |
+| Hook / linha de abertura | `hook-writer-sms` |
+| Roteiro de vídeo / script / reel | `video-script-sms` |
+| Ilustração editorial (artigo/carrossel) | `illustration-writer-sms` |
+| Repurpose de conteúdo existente | `content-repurposer-sms` |
+| Publicação de artigo no X | `x-article-publisher` |
+
+**STOP:** se o formato pedido não tiver uma linha correspondente nesta tabela, perguntar ao usuário qual skill de criação usar antes de produzir qualquer texto — nunca assumir formato livre por omissão.
+
+### GATE B — Ângulo/framework narrativo
+
+Antes de acionar a skill de criação, verificar se o ângulo já está definido:
+- Ângulo/estrutura especificado pelo usuário → segue direto para a skill de criação
+- Ângulo em aberto → **acionar `narrative-framework-sms` primeiro**, sempre, independente do formato (carrossel, artigo, thread, post, hook, roteiro de vídeo)
+
+**STOP:** nunca pular esta oferta para "economizar tempo" — a única exceção válida é o usuário dizer explicitamente que não quer passar pelo framework.
+
+### GATE C — Copy QA obrigatório antes da entrega
+
+Toda skill de criação acionada por este orquestrador deve executar o `copy-qa-sms` (Voice Gate + AI Pattern Gate + padrões estruturais) antes de entregar o resultado final ao usuário.
+
+**STOP:** se a skill de criação retornar copy sem ter passado pelo `copy-qa-sms`, o orquestrador aciona `copy-qa-sms` manualmente antes de entregar — isso nunca é uma etapa opcional, mesmo que a skill específica tenha falhado em embuti-la.
+
+### GATE D — Empacotamento final
+
+Salvar os artefatos finais em `clients/[cliente]/runs/[data]/`, seguindo a convenção de nomes do `CLAUDE.md` daquele cliente. Isso é o empacotamento final — não substitui nenhum dos gates A, B e C acima.
+
+### Exceção (a única válida para os 4 gates)
+
+Se o usuário disser explicitamente "não quer passar pela skill / pelo framework / pelo QA, quer só um rascunho rápido", o orquestrador pode prosseguir em modo manual — mas **sempre** sinalizando de forma visível:
+`[⚠️ COPY SEM GATE — não passou por narrative-framework-sms e/ou copy-qa-sms]`
+
+### Por que estes gates existem aqui (não só no CLAUDE.md)
+
+Em 2026-07-21, um carrossel foi produzido escrevendo ângulos manualmente, sem passar por nenhuma skill — pulou o gate de framework narrativo e o QA. O `CLAUDE.md` raiz descreve a regra em nível de sistema; esta seção a torna operacional dentro do próprio fluxo de roteamento do orquestrador, para que valha sempre que qualquer produção passar por aqui — carrossel, artigo, post, thread, hook, roteiro de vídeo — sem depender de releitura externa da regra.
 
 ---
 
